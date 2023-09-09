@@ -1,4 +1,5 @@
-/* PROBLEM: Remove the duplicate characters from a given string. */
+/* PROBLEM: Remove the duplicate characters
+from a given string. */
 
 #include <iostream>
 
