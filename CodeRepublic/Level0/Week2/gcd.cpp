@@ -25,7 +25,7 @@ int main()
     cin >> num1 >> num2;
     if (num1 < 0 || num2 < 0)
     {
-        cout << "Wrong input!\n";
+        cout << "Wrong input!" << endl;
         exit(1);
     }
     cout << "The greatest common divisor of this two numbers is: "
