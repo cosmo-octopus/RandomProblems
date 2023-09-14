@@ -1,3 +1,12 @@
+/* PROBLEM: The user is prompted to enter
+an integer value k, the program will then
+shift the array elements k positions to the
+right, while the last K elements are moved
+to the beginning of the array. For example:
+if we have an array [1 2 3 4 5 6 7 8], shifting
+2 positions to the right should give the
+array [7 8 1 2 3 4 5 6]. */
+
 #include <iostream>
 #include <cstdlib>
 using namespace std;
