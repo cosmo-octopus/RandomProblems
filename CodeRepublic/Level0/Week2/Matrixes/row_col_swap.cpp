@@ -1,34 +1,34 @@
-/* PROBLEM: Implement a function that
-calculates and returns the sum of the
-elements located above the primary diagonal
-of a square matrix, including the elements
-of the primary diagonal itself.*/
+/* PROBLEM: Implement a function
+that takes a matrix as input and
+swaps its rows and columns. */
 
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
 using namespace std;
 
-#define SIZE 5
+#define SIZE 3
 
-int sum_above(int arr[][SIZE])
+void    swap(int *a, int *b)
 {
-    int sum = 0;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void    row_col_swap(int arr[][SIZE])
+{
+    int res[SIZE][SIZE];
     int i = -1, j = -1;
 
     while (++i < SIZE)
     {
-        while (++j < SIZE && j <= i)
+        while (++j < SIZE)
         {
-            sum += arr[i][j];
-            if (j >= i)
-            {
-                j = -1;
-                break ;
-            }
+            if (i > j)
+                swap(&arr[i][j], &arr[j][i]);
         }
+        j = -1;
     }
-    return (sum);
 }
 
 void    fill_matrix(int arr[][SIZE])
@@ -59,8 +59,12 @@ int main()
             cout << arr[i][j] << " ";
         cout << endl;
     }
-
-    sum = sum_above(arr);
-    cout << "The sum of the elements located above the primary diagonal is: " 
-    << sum << endl;
+    row_col_swap(arr);
+    cout <<"\nFinal result:" << endl;
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+            cout << arr[i][j] << " ";
+        cout << endl;
+    }
 }

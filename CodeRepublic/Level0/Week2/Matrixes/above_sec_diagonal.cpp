@@ -1,34 +1,27 @@
 /* PROBLEM: Implement a function that
 calculates and returns the sum of the
-elements located above the primary diagonal
+elements located above the secondary diagonal
 of a square matrix, including the elements
-of the primary diagonal itself.*/
+of the secondary diagonal itself.*/
 
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
 using namespace std;
 
 #define SIZE 5
 
-int sum_above(int arr[][SIZE])
+int above_sec_diagonal(int arr[][SIZE])
 {
-    int sum = 0;
-    int i = -1, j = -1;
+    int res = 0;
+    int i = -1, j = SIZE;
 
     while (++i < SIZE)
     {
-        while (++j < SIZE && j <= i)
-        {
-            sum += arr[i][j];
-            if (j >= i)
-            {
-                j = -1;
-                break ;
-            }
-        }
+        while (--j >= 0 && i + j <= SIZE - 1)
+            res += arr[i][j];
+        j = SIZE;
     }
-    return (sum);
+    return (res);
 }
 
 void    fill_matrix(int arr[][SIZE])
@@ -60,7 +53,7 @@ int main()
         cout << endl;
     }
 
-    sum = sum_above(arr);
-    cout << "The sum of the elements located above the primary diagonal is: " 
+    sum = above_sec_diagonal(arr);
+    cout << "The sum of the elements located above the secondary diagonal is: " 
     << sum << endl;
 }
