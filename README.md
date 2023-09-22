@@ -1,3 +1,3 @@
 # RANDOM PROBLEMS
 
-Filenames that start with an asterisk `(*)` are the problems that i find to be more interesting.
+Filenames that start with an asterisk `(*)` are the problems i find to be more interesting.
