@@ -18,7 +18,7 @@ void    all_lowercase(char *str)
 int main()
 {
     char    str[] = {'H', 'e', 'L', 'l', 'O'};
-    all_small(str);
+    all_lowercase(str);
 
     for (int i = 0; str[i]; i++)
         cout << str[i] << " ";
