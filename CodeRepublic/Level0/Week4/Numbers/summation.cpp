@@ -1,3 +1,10 @@
+/* PROBLEM: Write a program that calculates
+the result of a summation series based on
+user-provided values of 'n' and 'x.'
+The program should compute the sum of a series
+defined by the following formula:
+Σ (-1)^j * (x^(j+1)) / (3j! + 2^(j+1)) */
+
 #include <iostream>
 using namespace std;
 
@@ -22,7 +29,7 @@ int   ft_factorial(int num)
     return (res);
 }
 
-double   math_sum(int n, int x)
+double   ft_summation(int n, int x)
 {
     double   res = 0;
     
@@ -49,5 +56,5 @@ int main()
     cout << "Enter x: ";
     cin >> x;
 
-    cout << "result: " << math_sum(n, x) << endl;
+    cout << "result: " << ft_summation(n, x) << endl;
 }

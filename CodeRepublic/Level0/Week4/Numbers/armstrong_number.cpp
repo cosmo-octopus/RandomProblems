@@ -1,3 +1,11 @@
+/* PROBLEM: Write a program that determines whether
+a given integer 'num' is an Armstrong number.
+An Armstrong number (also known as a narcissistic number)
+is a number that is equal to the sum of its own digits,
+each raised to the power of the number of digits in the number itself.
+The program should check if 'num' is an Armstrong number and output "YES"
+if it is, or "NO" if it is not. */
+
 #include <iostream>
 using namespace std;
 

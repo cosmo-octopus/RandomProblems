@@ -1,3 +1,9 @@
+/* PROBLEM: Write a program that determines whether
+a given set of three integer values forms a Pythagorean triple.
+If so, the program should calculate and display the values of sin
+and cos of an angle 'x' in a right triangle with sides 'a', 'b', and 'c'.
+If it is not a Pythagorean triple, the program should output a message indicating so.*/
+
 #include <iostream>
 using namespace std;
 
