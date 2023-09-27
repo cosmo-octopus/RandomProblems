@@ -17,7 +17,7 @@ void    all_lowercase(char *str)
 
 int main()
 {
-    char    str[] = {'H', 'e', 'L', 'l', 'O'};
+    char    str[] = "HeLlO";
     all_lowercase(str);
 
     for (int i = 0; str[i]; i++)
