@@ -10,7 +10,7 @@ using namespace std;
 
 // const char  *ft_strstr(const char *haystack, const char *needle)
 // {
-//     int			i = 0, j = 0;
+//     int			i, j;
 //     const char	*ptr = NULL;
 
 //     while (*(haystack + i))
@@ -32,7 +32,7 @@ using namespace std;
 
 const char  *ft_strstr(const char *haystack, const char *needle)
 {
-    int i = 0, j = 0;
+    int i, j;
     const char  *ptr = NULL;
 
     while (*(haystack + i))

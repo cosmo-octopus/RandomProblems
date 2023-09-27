@@ -17,7 +17,7 @@ int digit_sum(int num, int *res)
 
 int main()
 {
-    int num = 0, res = 0;
+    int num, res;
     cout << "Enter a number: ";
     cin >> num;
     cout << "The sum of the digits of the " <<

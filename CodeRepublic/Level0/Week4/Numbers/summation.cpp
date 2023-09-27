@@ -33,14 +33,13 @@ double   ft_summation(int n, int x)
 {
     double   res = 0;
     
-    double a = 0, b = 0, c = 0;
-    int sign = 0;
+    double a, b, c;
+    int sign;
     for (int j = 1; j <= n; j++)
     {
         a = ft_exp(x, j + 1);
         b = ft_factorial(3 * j);
         c = ft_exp(2, j + 1);
-
         sign = ft_exp(-1, j);
 
         res += sign * ( a / (b + c));
@@ -50,7 +49,7 @@ double   ft_summation(int n, int x)
 
 int main()
 {
-    int n = 0, x = 0;
+    int n, x;
     cout << "Enter n: ";
     cin >> n;
     cout << "Enter x: ";

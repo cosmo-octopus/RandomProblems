@@ -8,7 +8,6 @@ using namespace std;
 
 int fibonacci(int x)
 {
-    
     if (x <= 0)
         return (0);
     else if (x == 1)
@@ -18,7 +17,8 @@ int fibonacci(int x)
 
 int main()
 {
-    int x = 0;
+    int x;
+
     cout << "Index for a fibonacci number: ";
     cin >> x;
     cout << fibonacci(x) << endl;

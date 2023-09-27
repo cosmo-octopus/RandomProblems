@@ -7,7 +7,6 @@ using namespace std;
 
 const char    *ft_strchr(const char *str, const char c)
 {
-
     if (*str && *(str) != c)
         return (ft_strchr(++str, c));
     return (str);

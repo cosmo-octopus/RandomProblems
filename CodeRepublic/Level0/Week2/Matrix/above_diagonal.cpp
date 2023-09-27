@@ -48,7 +48,7 @@ void    fill_matrix(int arr[][SIZE])
 int main()
 {
     int arr[SIZE][SIZE];
-    int sum = 0;
+    int sum;
 
     fill_matrix(arr);
 

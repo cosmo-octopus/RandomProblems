@@ -23,8 +23,8 @@ unsigned long   ft_exp(int num, int exp)
 //          base ^ x == num
 int ft_log(int num, int base)
 {
-    unsigned long   res = 0;
-    int             x = 0;
+    unsigned long   res;
+    int             x;
 
     res = ft_exp(base, x);
     while (1)
@@ -41,7 +41,7 @@ int ft_log(int num, int base)
 
 int main()
 {
-    int num = 0, base = 0;
+    int num, base;
 
     cout << "Enter the number: ";
     cin >> num;

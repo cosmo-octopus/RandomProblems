@@ -23,7 +23,7 @@ int ft_exp(int num, int exp)
 
 int digit_counter(int num)
 {
-    int digit = 0;
+    int digit;
 
     while (num)
     {
@@ -37,7 +37,7 @@ bool    is_armstrong_num(int num)
 {
     int tmp = num;
     int digit = digit_counter(num);
-    int res = 0;
+    int res;
 
     while (tmp)
     {
@@ -51,7 +51,7 @@ bool    is_armstrong_num(int num)
 
 int main()
 {
-    int num = 0;
+    int num;
     cout << "Enter a number: ";
     cin >> num;
 

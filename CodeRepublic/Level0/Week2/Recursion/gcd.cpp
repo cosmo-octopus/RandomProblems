@@ -19,7 +19,7 @@ int gcd(int a, int b)
 
 int main()
 {
-    int num1 = 0, num2 = 0;
+    int num1, num2;
 
     cout << "Enter two positive numbers: ";
     cin >> num1 >> num2;

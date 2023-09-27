@@ -46,7 +46,7 @@ int modulus(int a, int b)
 }
 
 int main() {
-    int num1 = 0, num2 = 0;
+    int num1, num2;
     std::string oper;
 
     std::cout << "Enter the first number: ";
