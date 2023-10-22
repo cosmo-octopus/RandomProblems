@@ -9,7 +9,8 @@ Coding patterns enhance our “ability to map a new problem to an already known 
 
 `DS Involved:` Array, String, LinkedList
 
-![image](https://github.com/hheghine/Mastering-Coding-Patterns/assets/119530584/d5903eed-159d-44d2-b33c-c4b0a5342c54)
+![image](https://github.com/hheghine/RandomProblems/assets/119530584/851f1282-1501-4685-9209-3b19a97e0ee9)
+
 
 ## Pattern: Island (Matrix Traversal)
 
@@ -18,7 +19,8 @@ Coding patterns enhance our “ability to map a new problem to an already known 
 
 `DS Involved:` Matrix, Queue
 
-![image](https://github.com/hheghine/Mastering-Coding-Patterns/assets/119530584/e4b238d3-0942-446c-82b8-0ae11749f8b7)
+![image](https://github.com/hheghine/RandomProblems/assets/119530584/67d39d98-d54e-47be-8a8f-271243832448)
+
 
 ## Pattern: Fast & Slow Pointers
 
@@ -27,7 +29,8 @@ Coding patterns enhance our “ability to map a new problem to an already known 
 
 `DS Involved:` Array, String, LinkedList
 
-![image](https://github.com/hheghine/Mastering-Coding-Patterns/assets/119530584/6fa174d5-687f-4039-bd92-17eb1d4312d4)
+![image](https://github.com/hheghine/RandomProblems/assets/119530584/ae7ed042-8c9a-49f1-88ca-8fc60a78f51c)
+
 
 ## Pattern: Sliding Window
 `Description:` This pattern involves creating a ‘window’ into the data structure and then moving that window around to gather specific information.<br>
@@ -35,4 +38,5 @@ Coding patterns enhance our “ability to map a new problem to an already known 
 
 `DS Involved:` Array, String, HashTable
 
-![image](https://github.com/hheghine/Mastering-Coding-Patterns/assets/119530584/fce6692c-2499-4a4c-813d-7350b2555105)
+![image](https://github.com/hheghine/RandomProblems/assets/119530584/14318d8e-542b-4951-a241-c7f73b65b59a)
+
