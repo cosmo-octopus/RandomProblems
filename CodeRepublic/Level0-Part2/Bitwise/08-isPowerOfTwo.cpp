@@ -1,5 +1,11 @@
 #include <iostream>
 
+// bool isPowerOfFour(int n)
+// {
+//     // Check if the number is a power of 2 and the only set bit is in an even position
+//     return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
+// }
+
 bool isPowerOfTwo(int n)
 {
     if (n <= 0)
