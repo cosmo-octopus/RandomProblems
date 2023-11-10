@@ -15,23 +15,26 @@ void	displayBinary(int number)
 	std::cout << std::endl;
 }
 
- void	reset(int n, int i)
- {
-	i--;
-	int	mask = 1 << i;
-
-	n = n & (~mask);
-	std::cout << i << "-th bit resetted: ";
-	displayBinary(n);
- }
-
-int	main()
+void reverseBits(int n)
 {
-	int	number;
+    int	bits = sizeof(int) * 8;
+	int	reverse = 0;
 
-	std::cout << "Enter a number: ";
-	std::cin >> number;
+	while (n)
+	{
+		reverse = reverse << 1;
+		if (n & 1)
+			reverse = reverse | 1;
+		n = n >> 1;
+	}
+	n = reverse;
+	displayBinary(n);
+}
 
+int main()
+{
+    int number = 240; // Example number: 11110000 in binary
+	
 	displayBinary(number);
-	reset(number, 3);
+    reverseBits(number);
 }

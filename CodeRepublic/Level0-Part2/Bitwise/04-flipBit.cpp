@@ -15,15 +15,15 @@ void	displayBinary(int number)
 	std::cout << std::endl;
 }
 
- void	reset(int n, int i)
- {
+void	flip(int n, int i)
+{
 	i--;
 	int	mask = 1 << i;
 
-	n = n & (~mask);
-	std::cout << i << "-th bit resetted: ";
+	n = n ^ mask;
+	std::cout << i << "-th bit flipped: ";
 	displayBinary(n);
- }
+}
 
 int	main()
 {
@@ -33,5 +33,5 @@ int	main()
 	std::cin >> number;
 
 	displayBinary(number);
-	reset(number, 3);
+	flip(number, 3);
 }
