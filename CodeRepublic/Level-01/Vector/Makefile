@@ -3,7 +3,7 @@ NAME		= vector
 SRC			= main.cpp
 OBJ			= $(SRC:.cpp=.o)
 CC			= g++
-CPPFLAGS	= -Wall -Wextra -Werror -pedantic #-std=c++98
+CPPFLAGS	= -Wall -Wextra -Werror -pedantic -fsanitize=address #-std=c++98
 
 RM			= rm -rf
 
@@ -15,7 +15,7 @@ RESET		:= \033[0m
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) Makefile
 			@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 			@$(PRINTF) "\r%100s\r$(PINK)☽ $(PURPLE)My Vector $(PINK)successfully compiled! $(RESET)\n"
 
