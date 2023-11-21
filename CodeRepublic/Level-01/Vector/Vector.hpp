@@ -21,13 +21,23 @@ class	Vector
 
 		size_t	get_size() const;
 		size_t	get_capacity() const;
-		void	vec_print(void) const;
+		void	print(void) const;
 		void	push_back(const T &elem);
 		size_t	max_size(void) const;
 		void	reserve(size_t capacity);
 		void	resize(size_t size);
 		bool	empty(void) const;
 		void	shrink_to_fit(void);
+		const T	&at(size_t index) const;
+		const T	&front(void) const;
+		const T	&back(void) const;
+		const T	*data(void) const;
+		void	clear(void);
+		void	assign(size_t count, const T &value);
+		void	pop_back(void);
+		void	insert(size_t position, const T &value);
+		void	erase(size_t position);
+		void	erase(size_t first, size_t last);
 };
 
 /***************************************************************/
@@ -43,18 +53,21 @@ Vector<T>::~Vector(void)
 	delete[] this->array;
 }
 
+/* returns the current number of elements in the vector */
 template <typename T>
 size_t	Vector<T>::get_size() const
 {
 	return (this->size);
 }
 
+/* returns the current capacity of the vector (i.e., maximum number of elements it can hold without reallocation) */
 template <typename T>
 size_t	Vector<T>::get_capacity() const
 {
 	return (this->capacity);
 }
 
+/* adds an element to the end of the vector */
 template <typename T>
 void	Vector<T>::push_back(const T &elem)
 {
@@ -77,20 +90,23 @@ void	Vector<T>::push_back(const T &elem)
         this->array[size++] = elem;
 }
 
+/* prints the elements of the vector */
 template <typename T>
-void	Vector<T>::vec_print(void) const
+void	Vector<T>::print(void) const
 {
 	for (size_t i = 0; i < this->size; i++)
 		std::cout << this->array[i] << " ";
 	std::cout << std::endl;
 }
 
+/* returns the maximum number of elements that the vector can theoretically hold based on system limitations */
 template <typename T>
 size_t	Vector<T>::max_size(void) const
 {
 	return (std::numeric_limits<size_t>::max());
 }
 
+/* allocates memory to accommodate a specified capacity without changing the vector's size */
 template <typename T>
 void	Vector<T>::reserve(size_t capacity)
 {
@@ -107,6 +123,7 @@ void	Vector<T>::reserve(size_t capacity)
 	}
 }
 
+/* resizes the vector to the specified size, either by adding default-initialized elements or removing excess elements if needed */
 template <typename T>
 void	Vector<T>::resize(size_t size)
 {
@@ -124,12 +141,14 @@ void	Vector<T>::resize(size_t size)
 
 }
 
+/* checks if the vector is empty (contains no elements) and returns true if it's empty, false otherwise */
 template <typename T>
 bool	Vector<T>::empty(void) const
 {
 	return (this->size == 0);
 }
 
+/* reduces the capacity of the container to fit its current size */
 template <typename T>
 void	Vector<T>::shrink_to_fit(void)
 {
@@ -152,6 +171,105 @@ void	Vector<T>::shrink_to_fit(void)
 		}
 		capacity = size;
 	}
+}
+
+/* returns a constant reference to the element at the specified index */
+template <typename T>
+const T	&Vector<T>::at(size_t index) const
+{
+	if (index >= this->size)
+		throw std::out_of_range("Index out of range");
+	return (this->array[index]);
+}
+
+/* retrieves a reference to the first element in the container */
+template <typename T>
+const T	&Vector<T>::front(void) const
+{
+	if (this->size == 0)
+		throw std::out_of_range("Vector is empty");
+	return (this->array[0]);
+}
+
+/* retrieves a reference to the last element in the container */
+template <typename T>
+const T	&Vector<T>::back(void) const
+{
+	if (this->size == 0)
+		throw std::out_of_range("Vector is empty");
+	return (this->array[this->size - 1]);
+}
+
+/* returns a pointer to the underlying array used to store the elements */
+template <typename T>
+const T	*Vector<T>::data(void) const
+{
+	return (this->array);
+}
+
+/* removes all elements from the container, leaving it with a size of 0
+note: the memory allocation remains unchanged; elements are logically removed but memory isn't deallocated here */
+template <typename T>
+void	Vector<T>::clear(void)
+{
+	this->size = 0;
+}
+
+/* replaces the contents of the vector with the provided elements */
+template <typename T>
+void	Vector<T>::assign(size_t count, const T &value)
+{
+	clear();
+	reserve(count);
+	for (size_t i = 0; i < count; i++)
+		this->array[i] = value;
+	this->size = count;
+}
+
+/* removes the last element from the container, effectively reducing its size by one */
+template <typename T>
+void	Vector<T>::pop_back(void)
+{
+	if (this->size > 0)
+		size--;
+}
+
+/* inserts elements at a specified position within the container */
+template <typename T>
+void	Vector<T>::insert(size_t position, const T &value)
+{
+	if (position > this->size)
+		throw std::out_of_range("Invalid position for insertion");
+	if (this->size >= this->capacity)
+		reserve(this->capacity * 2);
+	for (size_t i = 0; i > position; i--)
+		this->array[i] = this->array[i - 1];
+	this->array[position] = value;
+	size++;
+}
+
+/* removes elements from a specific position */
+template <typename T>
+void	Vector<T>::erase(size_t position)
+{
+	if (position > this->size)
+		throw std::out_of_range("Invalid position for erasing");
+	for (size_t i = position; i < this->size - 1; i++)
+		this->array[i] = this->array[i + 1];
+	this->size--;
+}
+
+/* removes elements within a range [first, last) */
+template <typename T>
+void	Vector<T>::erase(size_t first, size_t last)
+{
+	size_t	range;
+	if (first >= this->size || last > this->size || first >= last)
+        throw std::out_of_range("Invalid range for erasing");
+	range = last - first;
+	for (size_t i = last; i < this->size - 1; i++)
+		this->array[i - range] = this->array[i];
+	this->size -= range;
 }
 
 #endif
