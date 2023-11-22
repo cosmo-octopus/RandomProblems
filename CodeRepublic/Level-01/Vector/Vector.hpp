@@ -5,6 +5,8 @@
 
 # include <iostream>
 # include <limits>
+# include <stdexcept>
+# include <utility>
 
 /***************************************************************/
 
@@ -38,6 +40,10 @@ class	Vector
 		void	insert(size_t position, const T &value);
 		void	erase(size_t position);
 		void	erase(size_t first, size_t last);
+		void	swap(Vector &other);
+		template <class... Args>
+		void	emplace(size_t index, Args&&... args);
+
 };
 
 /***************************************************************/
@@ -270,6 +276,32 @@ void	Vector<T>::erase(size_t first, size_t last)
 	for (size_t i = last; i < this->size - 1; i++)
 		this->array[i - range] = this->array[i];
 	this->size -= range;
+}
+
+/* exchanges the contents of two containers */
+template <typename T>
+void	Vector<T>::swap(Vector &other)
+{
+	std::swap(this->array, other.array);
+	std::swap(this->capacity, other.capacity);
+	std::swap(this->size, other.size);
+}
+
+/*  extends the set container by inserting new elements into the container.
+elements are built directly (neither copied nor moved). */
+template <typename T>
+template <typename... Args>
+void	Vector<T>::emplace(size_t index, Args&&... args)
+{
+    if (index > size)
+        throw std::out_of_range("Index out of range");
+    if (size >= capacity)
+        reserve((capacity == 0) ? 1 : capacity * 2);
+    if (index < size)
+        for (size_t i = size; i > index; --i)
+    		array[i] = std::move(array[i - 1]);
+    new (&array[index]) T(std::forward<Args>(args)...);
+    ++size;
 }
 
 #endif

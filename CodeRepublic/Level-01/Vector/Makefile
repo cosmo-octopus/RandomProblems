@@ -3,7 +3,7 @@ NAME		= vector
 SRC			= main.cpp
 OBJ			= $(SRC:.cpp=.o)
 CC			= g++
-CPPFLAGS	= -Wall -Wextra -Werror -pedantic -fsanitize=address #-std=c++98
+CPPFLAGS	= -Wall -Wextra -Werror -pedantic -g -O1 -fsanitize=address #-std=c++98
 
 RM			= rm -rf
 

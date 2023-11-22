@@ -31,4 +31,11 @@ int	main()
 	vec.erase(0);
 	vec.erase(2, 5);
 	vec.print();
+	
+	Vector<int> vec1;
+	vec1.assign(3, 3);
+	vec.swap(vec1);
+	vec.print();
+	vec.emplace(1, 42);
+	vec.print();
 }
