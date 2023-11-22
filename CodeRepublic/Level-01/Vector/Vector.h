@@ -19,6 +19,8 @@ class	Vector
     	size_t	size;
 	public:
     	Vector(void);
+		template <typename... Args>
+		Vector(size_t count, Args&&... args);
    		~Vector();
 
 		size_t	get_size() const;
@@ -43,7 +45,6 @@ class	Vector
 		void	swap(Vector &other);
 		template <class... Args>
 		void	emplace(size_t index, Args&&... args); // variadic template parameter pack
-
 };
 
 /***************************************************************/

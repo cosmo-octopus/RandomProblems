@@ -38,4 +38,7 @@ int	main()
 	vec.print();
 	vec.emplace(1, 42);
 	vec.print();
+
+	Vector<int>	vec2(3, 10);
+	vec2.print();
 }

@@ -4,6 +4,14 @@ Vector<T>::Vector(void): array(nullptr), capacity(0), size(0)
 }
 
 template <typename T>
+template <typename... Args>
+Vector<T>::Vector(size_t count, Args&&... args): array(new T[count]), capacity(count), size(count)
+{
+    for (size_t i = 0; i < count; ++i)
+        array[i] = T(std::forward<Args>(args)...);
+}
+
+template <typename T>
 Vector<T>::~Vector(void)
 {
 	delete[] this->array;
