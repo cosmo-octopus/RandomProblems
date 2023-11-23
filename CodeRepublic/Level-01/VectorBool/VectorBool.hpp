@@ -59,11 +59,14 @@ void	VectorBool::push_back(bool value)
 	size_t	bitOffset = this->size % 8;
 
 	if (this->size / 8 >= this->capacity)
+	{
 		reserve(this->capacity == 0 ? 1 : this->capacity * 2);
+		byteIndex = this->size / 8;
+	}
 	if (value)
 		this->data[byteIndex] |= (1 << bitOffset);
 	else
-		this->data[byteIndex] &= (1 << bitOffset);
+		this->data[byteIndex] &= ~(1 << bitOffset);
 	this->size++;
 }
 
