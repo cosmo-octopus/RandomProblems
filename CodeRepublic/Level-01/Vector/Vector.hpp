@@ -1,3 +1,6 @@
+#ifndef __VECTOR_HPP__
+# define __VECTOR_HPP__
+
 template <typename T>
 Vector<T>::Vector(void): array(nullptr), capacity(0), size(0)
 {
@@ -102,7 +105,6 @@ void	Vector<T>::resize(size_t size)
 			this->size++;
 		}
 	}
-
 }
 
 /* checks if the vector is empty (contains no elements) and returns true if it's empty, false otherwise */
@@ -245,8 +247,8 @@ void	Vector<T>::swap(Vector &other)
 	std::swap(this->size, other.size);
 }
 
-/*  extends the set container by inserting new elements into the container.
-elements are built directly (neither copied nor moved). */
+/* extends the set container by inserting new elements into the container.
+elements are built directly (neither copied nor moved) */
 template <typename T>
 template <typename... Args>
 void	Vector<T>::emplace(size_t index, Args&&... args)
@@ -261,3 +263,5 @@ void	Vector<T>::emplace(size_t index, Args&&... args)
     new (&array[index]) T(std::forward<Args>(args)...);
     ++size;
 }
+
+#endif
