@@ -53,6 +53,7 @@ void	VectorBool::reserve(size_t capacity)
 	}
 }
 
+/* adds an element to the end */
 void	VectorBool::push_back(bool value)
 {
 	size_t	byteIndex = this->size / 8;
@@ -64,10 +65,31 @@ void	VectorBool::push_back(bool value)
 		byteIndex = this->size / 8;
 	}
 	if (value)
-		this->data[byteIndex] |= (1 << bitOffset);
+		this->data[byteIndex] |= (1 << bitOffset); // Set the bit to 1
 	else
-		this->data[byteIndex] &= ~(1 << bitOffset);
+		this->data[byteIndex] &= ~(1 << bitOffset); // Clear the bit at bitOffset
 	this->size++;
+}
+
+/* removes the last element */
+void	VectorBool::pop_back(void)
+{
+	size_t	byteIndex = this->size / 8;
+	size_t	bitOffset = this->size % 8;
+
+	if (this->size > 0)
+	{
+		this->data[byteIndex] &= ~(1 << bitOffset);
+		this->size--;
+	}
+	else if (this->size == 0)
+	{
+		delete[] this->data;
+		this->data = nullptr;
+		this->capacity = 0;
+	}
+	else
+		throw std::out_of_range("pop_back() on an empty vector");
 }
 
 #endif

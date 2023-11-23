@@ -21,6 +21,7 @@ class	VectorBool
 		size_t	max_size(void) const;
 		void	reserve(size_t capacity);
 		void	push_back(bool value);
+		void	pop_back(void);
 		bool	at(size_t index) const;
 
 };

@@ -24,7 +24,7 @@ clean:
 
 fclean:		clean
 			$(RM) $(NAME)
-			@$(PRINTF) "\r%100s\r$(PINK)☽ $(PURPLE)ex02 $(PINK)successfully cleaned! $(RESET)\n"
+			@$(PRINTF) "\r%100s\r$(PINK)☽ $(PURPLE)My VectorBool $(PINK)successfully cleaned! $(RESET)\n"
 
 re:			fclean $(NAME)
 
