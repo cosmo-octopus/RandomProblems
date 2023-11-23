@@ -9,15 +9,22 @@
 class	VectorBool
 {
 	private:
-		unsigned char*				_data;
-		size_t						_size;
-		size_t						_capacity;
+		unsigned char				*data;
+		size_t						size;
+		size_t						capacity;
 		// static const unsigned char	_bit_mask;
 	public:
 		VectorBool(void);
 		~VectorBool();
+
+		size_t	get_size(void) const;
+		size_t	max_size(void) const;
+		void	reserve(size_t capacity);
+		void	push_back(bool value);
+		bool	at(size_t index) const;
+
 };
 
-# include "VectorBool.hpp" 
+# include "VectorBool.hpp"
 
 #endif

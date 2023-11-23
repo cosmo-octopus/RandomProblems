@@ -23,8 +23,8 @@ class	Vector
 		Vector(size_t count, Args&&... args);
    		~Vector();
 
-		size_t	get_size() const;
-		size_t	get_capacity() const;
+		size_t	get_size(void) const;
+		size_t	get_capacity(void) const;
 		void	print(void) const;
 		void	push_back(const T &elem);
 		size_t	max_size(void) const;
