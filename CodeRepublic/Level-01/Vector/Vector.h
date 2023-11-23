@@ -45,6 +45,9 @@ class	Vector
 		void	swap(Vector &other);
 		template <class... Args>
 		void	emplace(size_t index, Args&&... args); // variadic template parameter pack
+		
+		template <typename U>
+		friend std::ostream& operator<<(std::ostream& os, const Vector<U>& vec);
 };
 
 /***************************************************************/

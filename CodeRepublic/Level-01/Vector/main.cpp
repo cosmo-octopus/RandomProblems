@@ -40,5 +40,6 @@ int	main()
 	vec.print();
 
 	Vector<int>	vec2(3, 10);
-	vec2.print();
+	// vec2.print();
+	std::cout << vec2 << std::endl;
 }
