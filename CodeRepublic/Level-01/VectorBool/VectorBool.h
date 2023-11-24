@@ -19,11 +19,12 @@ class	VectorBool
 
 		size_t	get_size(void) const;
 		size_t	max_size(void) const;
-		void	reserve(size_t capacity);
 		void	push_back(bool value);
 		void	pop_back(void);
 		bool	at(size_t index) const;
-
+		void	reserve(size_t capacity);
+		void	print(void);
+		void	resize(size_t size);
 };
 
 # include "VectorBool.hpp"

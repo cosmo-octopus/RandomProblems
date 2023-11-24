@@ -35,24 +35,6 @@ bool	VectorBool::at(size_t index) const
 	return ((this->data[byteIndex] >> bitOffset) & 1);
 }
 
-/* allocates memory to accommodate a specified number of elements without changing the size */
-void	VectorBool::reserve(size_t capacity)
-{
-	unsigned char	*data;
-	if (capacity > this->capacity)
-	{
-		data = new unsigned char[capacity];
-		if (this->data)
-		{
-			for (size_t i = 0; i < this->size; i++)
-				data[i] = this->data[i];
-			delete [] this->data;
-		}
-		this->data = data;
-		this->capacity = capacity;
-	}
-}
-
 /* adds an element to the end */
 void	VectorBool::push_back(bool value)
 {
@@ -90,6 +72,51 @@ void	VectorBool::pop_back(void)
 	}
 	else
 		throw std::out_of_range("pop_back() on an empty vector");
+}
+
+/* allocates memory to accommodate a specified number of elements without changing the size */
+void	VectorBool::reserve(size_t capacity)
+{
+	unsigned char	*data;
+	size_t			cpySize;
+	
+	if (capacity > this->capacity)
+	{
+		data = new unsigned char[capacity];
+		if (this->data)
+		{
+			cpySize = this->size / 8;
+			if (this->size % 8)
+				cpySize++;
+			for (size_t i = 0; i < cpySize; i++)
+				data[i] = this->data[i];
+			delete [] this->data;
+		}
+		this->data = data;
+		this->capacity = capacity;
+	}
+}
+
+void	VectorBool::print(void)
+{
+	for (size_t i = 0; i < this->size; i++)
+		std::cout << at(i) << " ";
+	std::cout << std::endl;
+}
+
+void	VectorBool::resize(size_t size)
+{
+	if (size < this->size)
+		this->size = size;
+	else if (size > this->size)
+	{
+		reserve(size);
+		while (this->size < size)
+		{
+			this->data[this->size] = bool();
+			this->size++;
+		}
+	}
 }
 
 #endif
