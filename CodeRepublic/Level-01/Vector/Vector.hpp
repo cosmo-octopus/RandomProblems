@@ -14,6 +14,22 @@ Vector<T>::Vector(size_t count, Args&&... args): array(new T[count]), capacity(c
         array[i] = T(std::forward<Args>(args)...);
 }
 
+/* Copy Constructor */
+template <typename T>
+Vector<T>::Vector(std::initializer_list<T> list): array(new T[list.size()]), capacity(list.size()), size(list.size())
+{
+	std::copy(list.begin(), list.end(), array);
+}
+
+/* Move Constructor */
+template<typename T>
+Vector<T>::Vector(Vector&& other) noexcept: array(other.array), capacity(other.capacity), size(other.size)
+{
+    other.size = 0;
+    other.capacity = 0;
+    other.array = nullptr;
+}
+
 template <typename T>
 Vector<T>::~Vector(void)
 {
@@ -261,7 +277,19 @@ void	Vector<T>::emplace(size_t index, Args&&... args)
         for (size_t i = size; i > index; --i)
     		array[i] = std::move(array[i - 1]);
     new (&array[index]) T(std::forward<Args>(args)...);
-    ++size;
+	this->size++;
+}
+
+template <typename T>
+template <typename... Args>
+void	Vector<T>::emplace_back(Args&&... args)
+{
+    if (size >= capacity)
+	{
+    	reserve((capacity == 0) ? 1 : capacity * 2);
+	}
+	new (&array[this->size]) T(std::forward<Args>(args)...);
+	this->size++;
 }
 
 /* a friend function is a function that is not a member of a class but has access to the
@@ -273,6 +301,38 @@ std::ostream& operator<<(std::ostream& os, const Vector<U>& vec) {
         os << vec.array[i] << " ";
     os << "]";
     return os;
+}
+
+/* Copy Assignment Operator */
+template <typename T>
+Vector<T>	&Vector<T>::operator=(const Vector &other)
+{
+	if (this != &other)
+	{
+		delete[] this->array;
+		this->size = other.size;
+		this->capacity = other.capacity;
+		this->array = new T[this->capacity];
+		std::copy(other.array, other.array + other.size, this->array);
+	}
+	return (*this);
+}
+
+/* Move Assignment Operator */
+template<typename T>
+Vector<T>& Vector<T>::operator=(Vector&& other) noexcept
+{
+    if (this != &other)
+	{
+        delete[] array;
+        this->size = other.size;
+        this->capacity = other.capacity;
+        this->array = other.array;
+        other.size = 0;
+        other.capacity = 0;
+        other.array = nullptr;
+    }
+    return (*this);
 }
 
 #endif

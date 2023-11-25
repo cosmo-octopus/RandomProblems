@@ -42,4 +42,18 @@ int	main()
 	Vector<int>	vec2(3, 10);
 	// vec2.print();
 	std::cout << vec2 << std::endl;
+
+	Vector<int> vecCpy(std::move(vec2));
+	vecCpy.print();
+	vec2.print();
+
+	vec2 = vecCpy;
+	vec2.print();
+
+	vec2 = std::move(vecCpy);
+
+	vecCpy.print();
+	vec2.print();
+	vec2.emplace_back(42);
+	vec2.print();
 }
