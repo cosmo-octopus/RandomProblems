@@ -9,7 +9,8 @@ VectorBool::VectorBool(void): data(nullptr), size(0), capacity(0)
 
 VectorBool::~VectorBool()
 {
-	delete[] data;
+	if (data)
+		delete[] data;
 }
 
 /* returns the current size */
@@ -24,20 +25,8 @@ size_t	VectorBool::max_size(void) const
 	return (std::numeric_limits<size_t>::max());
 }
 
-/* calculates the byte index and bit offset to access the required bit */
-bool	VectorBool::at(size_t index) const
-{
-	size_t	byteIndex = index / 8;
-	size_t	bitOffset = index % 8;
-
-	if (index >= this->size)
-		throw std::out_of_range("Index out of range");
-	return ((this->data[byteIndex] >> bitOffset) & 1);
-}
-
-/* returns a REFERENCE of a bit */
-// bool	VectorBool::At(size_t index)
-VectorBool::BoolReference VectorBool::At(size_t index)
+/* returns a REFERENCE of the required bit */
+VectorBool::BoolReference VectorBool::at(size_t index)
 {
 	size_t	byteIndex = index / 8;
 	size_t	bitOffset = index % 8;
@@ -46,16 +35,6 @@ VectorBool::BoolReference VectorBool::At(size_t index)
 		throw std::out_of_range("Index out of range");
 	return (BoolReference(this->data[byteIndex], bitOffset));
 }
-
-// bool	VectorBool::At(size_t index, bool flag)
-// {
-// 	size_t	byteIndex = index / 8;
-// 	size_t	bitOffset = index % 8;
-
-// 	if (index >= this->size)
-// 		throw std::out_of_range("Index out of range");
-// 	return (BoolReference(this->data[byteIndex], bitOffset, flag));
-// }
 
 /* adds an element to the end */
 void	VectorBool::push_back(bool value)
@@ -126,6 +105,7 @@ void	VectorBool::print(void)
 	std::cout << std::endl;
 }
 
+/* resizes the vector to the specified size, either by adding default-initialized elements or removing excess elements if needed */
 void	VectorBool::resize(size_t size)
 {
 	if (size < this->size)
@@ -139,6 +119,15 @@ void	VectorBool::resize(size_t size)
 			this->size++;
 		}
 	}
+}
+
+std::ostream	&operator <<(std::ostream &os, VectorBool &obj)
+{
+	os << "[ ";
+	for (size_t i = 0; i < obj.size; i++)
+		os << obj.at(i) << " ";
+	os << "]";
+	return (os);
 }
 
 #endif
