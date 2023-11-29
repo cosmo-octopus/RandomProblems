@@ -1,6 +1,8 @@
 #ifndef __VECTOR_HPP__
 # define __VECTOR_HPP__
 
+#include "Vector.h"
+
 template <typename T>
 Vector<T>::Vector(void): array(nullptr), capacity(0), size(0)
 {
