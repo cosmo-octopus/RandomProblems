@@ -35,16 +35,27 @@ bool	VectorBool::at(size_t index) const
 	return ((this->data[byteIndex] >> bitOffset) & 1);
 }
 
-bool	VectorBool::At(size_t index)
+/* returns a REFERENCE of a bit */
+// bool	VectorBool::At(size_t index)
+VectorBool::BoolReference VectorBool::At(size_t index)
 {
 	size_t	byteIndex = index / 8;
 	size_t	bitOffset = index % 8;
 
 	if (index >= this->size)
 		throw std::out_of_range("Index out of range");
-	BoolReference(this->data[byteIndex], bitOffset);
-	BoolReference::changeBit();
+	return (BoolReference(this->data[byteIndex], bitOffset));
 }
+
+// bool	VectorBool::At(size_t index, bool flag)
+// {
+// 	size_t	byteIndex = index / 8;
+// 	size_t	bitOffset = index % 8;
+
+// 	if (index >= this->size)
+// 		throw std::out_of_range("Index out of range");
+// 	return (BoolReference(this->data[byteIndex], bitOffset, flag));
+// }
 
 /* adds an element to the end */
 void	VectorBool::push_back(bool value)
