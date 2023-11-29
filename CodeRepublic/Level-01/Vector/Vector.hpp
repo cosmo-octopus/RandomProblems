@@ -298,7 +298,8 @@ void	Vector<T>::emplace_back(Args&&... args)
 /* a friend function is a function that is not a member of a class but has access to the
 private and protected members of that class. It is declared within the class using the friend keyword */
 template <typename U>
-std::ostream& operator<<(std::ostream& os, const Vector<U>& vec) {
+std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
+{
     os << "[ ";
     for (size_t i = 0; i < vec.size; ++i)
         os << vec.array[i] << " ";

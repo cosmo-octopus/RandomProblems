@@ -16,10 +16,10 @@ int	main()
 	vec.shrink_to_fit();
 	std::cout << vec.get_size() << " " << vec.get_capacity() << std::endl;
 	vec.push_back(7);
-	// std::cout << vec.at(4) << std::endl;
+
 	vec.print();
 	vec.clear();
-	// vec.print();
+
 	vec.assign(3, 6);
 	vec.print();
 	vec.pop_back();
