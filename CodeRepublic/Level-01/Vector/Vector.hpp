@@ -35,7 +35,8 @@ Vector<T>::Vector(Vector&& other) noexcept: array(other.array), capacity(other.c
 template <typename T>
 Vector<T>::~Vector(void)
 {
-	delete[] this->array;
+	if (this->array)
+		delete[] this->array;
 }
 
 /* returns the current number of elements in the vector */
