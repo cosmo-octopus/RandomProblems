@@ -18,4 +18,16 @@ int	main()
 
 	stack.top() = 5;
 	stack.printAll();
+	std::cout << "popped element: " << stack.pop() << std::endl;
+	stack.printAll();
+	std::cout << "popped element: " << stack.pop() << std::endl;
+	stack.printAll();
+	std::cout << "size: " << stack.get_size() << std::endl;
+	std::cout << "popped element: " << stack.pop() << std::endl;
+	stack.printAll();
+	std::cout << "popped element: " << stack.pop() << std::endl;
+	std::cout << "is stack empty?: " << stack.empty() << std::endl;
+	stack.push(42);
+	stack.printAll();
+
 }

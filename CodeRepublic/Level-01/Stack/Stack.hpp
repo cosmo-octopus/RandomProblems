@@ -78,12 +78,15 @@ void	Stack<T>::resize(size_t size)
 template <typename T>
 T	Stack<T>::pop(void)
 {
+	T	tmp;
+
 	if (size == 0)
         throw std::out_of_range("Stack is empty");
-	this->size--;
 	if (size <= capacity / 4)
-		resize(capacity / 2);
-	return (data[size]);
+		resize(size);
+	tmp = data[size - 1];
+	this->size--;
+	return (tmp);
 }
 
 template <typename T>
