@@ -13,3 +13,4 @@
 	- Vector Class Implementation
 	- VectorBool Class Implementation
    	- Stack Class Implementation
+   	- Queue Class Implementation
