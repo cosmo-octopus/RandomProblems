@@ -20,6 +20,7 @@ class	List
 				Node(void): data(0), next(nullptr){}
 				Node(const T &data): data(data), next(nullptr){}
 		};
+
 	private:
 		Node	*head;
 		Node	*tail;
@@ -30,7 +31,11 @@ class	List
 		~List();
 
 		void	push_back(const T &data);
+		void	push_front(const T &data);
 		void	list_print(void);
+		void	clear(void);
+		size_t	get_size(void);
+		void	intert(size_t pos, const T &data);
 };
 
 # include "List.hpp"
