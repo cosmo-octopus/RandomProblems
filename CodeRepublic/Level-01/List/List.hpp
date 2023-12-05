@@ -110,4 +110,29 @@ void	List<T>::intert(size_t pos, const T &data)
 	}
 }
 
+template <typename T>
+void	List<T>::erase(size_t pos)
+{
+	Node	*tmp = head;
+	Node	*del;
+
+	if(pos > this->size)
+		throw std::out_of_range("Invalid position to erase a node");
+	if (pos == 0)
+	{
+        this->head = tmp->next;
+        del = tmp;
+    }
+	else
+	{
+        for (size_t i = 0; i < pos - 1; i++)
+            tmp = tmp->next;
+        del = tmp->next;
+        tmp->next = tmp->next->next;
+    }
+
+    delete del;
+    this->size --;
+}
+
 #endif

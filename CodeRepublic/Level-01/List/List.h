@@ -36,6 +36,7 @@ class	List
 		void	clear(void);
 		size_t	get_size(void);
 		void	intert(size_t pos, const T &data);
+		void	erase(size_t pos);
 };
 
 # include "List.hpp"
