@@ -135,4 +135,35 @@ void	List<T>::erase(size_t pos)
     this->size --;
 }
 
+template <typename T>
+List<T>	&List<T>::operator= (const List &list)
+{
+	clear();
+
+	Node	*node = nullptr;
+	Node	*iter = list.head;
+	Node	*curr = nullptr;
+	size_t	i = 0;
+
+	while (iter)
+	{
+		node = new Node(iter->data);
+		if (i == 0)
+		{
+			this->head = node;
+			curr = this->head;
+		}
+		curr->next = node;
+		curr = curr->next;
+		if (i == list.size - 1)
+		{
+			this->tail = node;
+			node->next = nullptr;
+		}
+		iter = iter->next;
+		i++;
+	}
+	return (*this);
+}
+
 #endif

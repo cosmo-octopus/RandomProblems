@@ -37,6 +37,8 @@ class	List
 		size_t	get_size(void);
 		void	intert(size_t pos, const T &data);
 		void	erase(size_t pos);
+
+		List<T>	&operator= (const List &list);
 };
 
 # include "List.hpp"

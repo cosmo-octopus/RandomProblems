@@ -17,5 +17,10 @@ int	main()
 	list.list_print();
 	list.erase(0);
 	list.erase(3);
+	std::cout << "original list: ";
 	list.list_print();
+	List<int> list1;
+	list1 = list;
+	std::cout << "copied list: ";
+	list1.list_print();
 }
