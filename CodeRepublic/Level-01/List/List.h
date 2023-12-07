@@ -19,6 +19,8 @@ class	List
 
 				Node(void): data(0), next(nullptr){}
 				Node(const T &data): data(data), next(nullptr){}
+
+
 		};
 
 	private:
@@ -37,8 +39,17 @@ class	List
 		size_t	get_size(void);
 		void	intert(size_t pos, const T &data);
 		void	erase(size_t pos);
+		void	pop_back(void);
+		void	pop_front(void);
+		bool	empty(void);
+		void	unique(void);
+		List<T>	&merge(List<T> &list);
 
 		List<T>	&operator= (const List &list);
+		Node* merge(Node* first, Node* second);
+    	Node* mergeSort(Node* head);
+		void sortList(List<T>& list);
+
 };
 
 # include "List.hpp"
