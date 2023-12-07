@@ -27,6 +27,8 @@ class	List
 		Node	*head;
 		Node	*tail;
 		size_t	size;
+
+		// List<T>	&merge(List<T> &first, List<T> &second);
 	
 	public:
 		List(void);
@@ -44,12 +46,14 @@ class	List
 		bool	empty(void);
 		void	unique(void);
 		List<T>	&merge(List<T> &list);
+		void	sort(void);
 
 		List<T>	&operator= (const List &list);
-		Node* merge(Node* first, Node* second);
-    	Node* mergeSort(Node* head);
-		void sortList(List<T>& list);
 
+	private:
+		Node	*mergeSort(Node* head);
+    	Node	*getMiddle(Node* head);
+    	Node	*merge(Node* left, Node* right);
 };
 
 # include "List.hpp"

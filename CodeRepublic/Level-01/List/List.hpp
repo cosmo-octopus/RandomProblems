@@ -276,10 +276,76 @@ List<T>	&List<T>::merge(List<T> &other)
 		curr->next = tmp2;
 		this->tail = other.tail;
 	}
+	this->size += other.size;
 	other.head = nullptr;
 	other.tail = nullptr;
 	other.size = 0;
 	return (*this);
+}
+
+template <typename T>
+typename List<T>::Node	*List<T>::mergeSort(Node* head)
+{
+    Node	*middle = getMiddle(head);
+    Node	*nextToMiddle = middle->next;
+	Node	*left;
+	Node	*right;
+
+    if (!head || !head->next)
+        return (head);
+    middle->next = nullptr;
+	left = mergeSort(head);
+	right = mergeSort(nextToMiddle);
+    return merge(left, right);
+}
+
+template <typename T>
+typename List<T>::Node	*List<T>::getMiddle(Node* head)
+{
+    Node* slow = head;
+    Node* fast = head->next;
+
+    if (!head)
+        return (head);
+    while (fast)
+	{
+        fast = fast->next;
+        if (fast)
+		{
+            slow = slow->next;
+            fast = fast->next;
+        }
+    }
+    return (slow);
+}
+
+template <typename T>
+typename List<T>::Node	*List<T>::merge(Node* left, Node* right)
+{
+    Node* result = nullptr;
+
+    if (!left)
+        return (right);
+    if (!right)
+        return (left);
+    if (left->data <= right->data)
+	{
+        result = left;
+        result->next = merge(left->next, right);
+    }
+	else
+	{
+        result = right;
+        result->next = merge(left, right->next);
+    }
+    return (result);
+}
+
+/* Modified mergeSort function to be called from the outside */
+template <typename T>
+void	List<T>::sort(void)
+{
+    this->head = mergeSort(this->head);
 }
 
 #endif
