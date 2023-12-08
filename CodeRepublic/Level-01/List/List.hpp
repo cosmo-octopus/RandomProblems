@@ -296,7 +296,7 @@ typename List<T>::Node	*List<T>::mergeSort(Node* head)
     middle->next = nullptr;
 	left = mergeSort(head);
 	right = mergeSort(nextToMiddle);
-    return merge(left, right);
+    return (merge(left, right));
 }
 
 template <typename T>
@@ -345,7 +345,34 @@ typename List<T>::Node	*List<T>::merge(Node* left, Node* right)
 template <typename T>
 void	List<T>::sort(void)
 {
+	Node	*iter;
+
     this->head = mergeSort(this->head);
+	iter = this->head;
+	while (iter->next)
+		iter = iter->next;
+	this->tail = iter;
+}
+
+template <typename T>
+void	List<T>::reverse(void)
+{
+	Node	*curr;
+	Node	*prev = nullptr;
+	Node	*next = nullptr;
+
+	if (!head)
+		throw std::out_of_range("List is empty");
+	curr = this->head;
+	this->head = this->tail;
+	this->tail = curr;
+	while(curr)
+	{
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
 }
 
 #endif

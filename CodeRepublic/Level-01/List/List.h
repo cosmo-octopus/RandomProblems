@@ -27,9 +27,8 @@ class	List
 		Node	*head;
 		Node	*tail;
 		size_t	size;
-
-		// List<T>	&merge(List<T> &first, List<T> &second);
 	
+	/*  methods  */
 	public:
 		List(void);
 		~List();
@@ -47,6 +46,7 @@ class	List
 		void	unique(void);
 		List<T>	&merge(List<T> &list);
 		void	sort(void);
+		void	reverse(void);
 
 		List<T>	&operator= (const List &list);
 

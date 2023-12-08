@@ -25,7 +25,10 @@ int	main()
 	list1.list_print();
 
 	list.merge(list1);
-	std::cout << "Merge: ";
+	std::cout << "merge: ";
 	list.list_print();
 	std::cout << "final size: " << list.get_size() << std::endl;
+	list.reverse();
+	std::cout << "reversed list: ";
+	list.list_print();
 }
