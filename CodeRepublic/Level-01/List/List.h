@@ -47,6 +47,7 @@ class	List
 		List<T>	&merge(List<T> &list);
 		void	sort(void);
 		void	reverse(void);
+		void	swap(List<T> &other);
 
 		List<T>	&operator= (const List &list);
 

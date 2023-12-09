@@ -231,56 +231,62 @@ void	List<T>::unique(void)
 }
 
 template <typename T>
-List<T>	&List<T>::merge(List<T> &other)
+List<T>& List<T>::merge(List<T>& other)
 {
-	Node	*tmp1 = this->head;
-	Node	*tmp2 = other.head;
-	Node	*curr;
+    Node* tmp1 = this->head;
+    Node* tmp2 = other.head;
+    Node* curr = nullptr;
 
-	if (!this->head)
+    if (!tmp1)
 	{
-		this->head = other.head;
-		this->tail = other.tail;
-		this->size = other.size;
-		return (*this);
-	}
-	if (!other.head)
-		return (*this);
-	if (tmp1 && tmp2)
+        this->head = other.head;
+        this->tail = other.tail;
+        this->size = other.size;
+        other.head = nullptr;
+        other.tail = nullptr;
+        other.size = 0;
+        return (*this);
+    }
+    if (!tmp2)
+        return (*this);
+    if (tmp2->data < tmp1->data)
 	{
-		if (tmp2->data <= tmp1->data)
+        this->head = tmp2;
+        tmp2 = tmp2->next;
+    }
+	else
+        tmp1 = tmp1->next;
+    curr = this->head;
+    while (tmp1 && tmp2)
+	{
+        if (tmp1->data < tmp2->data)
 		{
-			this->head = tmp2;
-			tmp2 = tmp2->next;
-		}
-	}
-	curr = this->head;
-	while (tmp1 && tmp2)
-	{
-		if (tmp1->data <= tmp2->data)
-		{
-			curr->next = tmp1;
-			tmp1 = tmp1->next;
-		}
+            curr->next = tmp1;
+            tmp1 = tmp1->next;
+        }
 		else
 		{
-			curr->next = tmp2;
-			tmp2 = tmp2->next;
-		}
-		curr = curr->next;
-	}
-	if (tmp1)
-		curr->next = tmp1;
-	else if (tmp2)
-	{
-		curr->next = tmp2;
-		this->tail = other.tail;
-	}
-	this->size += other.size;
-	other.head = nullptr;
-	other.tail = nullptr;
-	other.size = 0;
-	return (*this);
+            curr->next = tmp2;
+            tmp2 = tmp2->next;
+        }
+        curr = curr->next;
+    }
+    if (tmp1)
+        curr->next = tmp1;
+    else if (tmp2)
+        curr->next = tmp2;
+
+    while (curr->next != nullptr)
+        curr = curr->next;
+    this->tail = curr;
+
+    this->size += other.size;
+
+    other.head = nullptr;
+    other.tail = nullptr;
+    other.size = 0;
+
+    return *this;
 }
 
 template <typename T>
@@ -373,6 +379,14 @@ void	List<T>::reverse(void)
 		prev = curr;
 		curr = next;
 	}
+}
+
+template <typename T>
+void List<T>::swap(List<T> &other)
+{
+    std::swap(head, other.head);
+    std::swap(tail, other.tail);
+    std::swap(size, other.size);
 }
 
 #endif
