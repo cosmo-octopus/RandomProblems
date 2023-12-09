@@ -72,7 +72,7 @@ void	List<T>::clear(void)
 }
 
 template <typename T>
-size_t	List<T>::get_size(void)
+size_t	List<T>::get_size(void) const
 {
 	return (this->size);
 }
@@ -387,6 +387,72 @@ void List<T>::swap(List<T> &other)
     std::swap(head, other.head);
     std::swap(tail, other.tail);
     std::swap(size, other.size);
+}
+
+template <typename T>
+bool	operator==(const List<T>& lhs, const List<T>& rhs)
+{
+	typename List<T>::Node	*lhsCurr;
+    typename List<T>::Node	*rhsCurr;
+
+    if (lhs.get_size() != rhs.get_size())
+        return (false);
+
+    lhsCurr = lhs.head;
+    rhsCurr = rhs.head;
+
+    while (lhsCurr != nullptr)
+	{
+        if (lhsCurr->data != rhsCurr->data)
+            return (false);
+        lhsCurr = lhsCurr->next;
+        rhsCurr = rhsCurr->next;
+    }
+
+    return (true);
+}
+
+template <typename T>
+bool	operator!=(const List<T>& lhs, const List<T>& rhs)
+{
+    return !(lhs == rhs);
+}
+
+template <typename T>
+bool	operator<(const List<T>& lhs, const List<T>& rhs)
+{
+	typename List<T>::Node* lhsCurr = lhs.head;
+	typename List<T>::Node* rhsCurr = rhs.head;
+
+    while (lhsCurr && rhsCurr)
+	{
+        if (lhsCurr->data < rhsCurr->data)
+            return (true);
+        else if (lhsCurr->data > rhsCurr->data)
+            return (false);
+        lhsCurr = lhsCurr->next;
+        rhsCurr = rhsCurr->next;
+    }
+
+    return (lhs.get_size() < rhs.get_size());
+}
+
+template <typename T>
+bool	operator<=(const List<T>& lhs, const List<T>& rhs)
+{
+    return (lhs == rhs || lhs < rhs);
+}
+
+template <typename T>
+bool	operator>(const List<T>& lhs, const List<T>& rhs)
+{
+    return !(lhs <= rhs);
+}
+
+template <typename T>
+bool	operator>=(const List<T>& lhs, const List<T>& rhs)
+{
+    return !(lhs < rhs);
 }
 
 #endif

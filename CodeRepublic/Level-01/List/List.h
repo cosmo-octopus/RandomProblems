@@ -37,7 +37,7 @@ class	List
 		void	push_front(const T &data);
 		void	list_print(void);
 		void	clear(void);
-		size_t	get_size(void);
+		size_t	get_size(void) const;
 		void	intert(size_t pos, const T &data);
 		void	erase(size_t pos);
 		void	pop_back(void);
@@ -49,7 +49,26 @@ class	List
 		void	reverse(void);
 		void	swap(List<T> &other);
 
+		/*  operators  */
 		List<T>	&operator= (const List &list);
+
+		template <typename U>
+    	friend bool operator==(const List<U>& lhs, const List<U>& rhs);
+
+    	template <typename U>
+    	friend bool operator!=(const List<U>& lhs, const List<U>& rhs);
+
+    	template <typename U>
+    	friend bool operator<(const List<U>& lhs, const List<U>& rhs);
+
+    	template <typename U>
+    	friend bool operator<=(const List<U>& lhs, const List<U>& rhs);
+
+    	template <typename U>
+    	friend bool operator>(const List<U>& lhs, const List<U>& rhs);
+
+    	template <typename U>
+    	friend bool operator>=(const List<U>& lhs, const List<U>& rhs);
 
 	private:
 		Node	*mergeSort(Node* head);

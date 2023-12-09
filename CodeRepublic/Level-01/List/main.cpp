@@ -38,4 +38,16 @@ int	main()
 	list.reverse();
 	std::cout << "reversed list: ";
 	list.list_print();
+
+	List<int>	l;
+	l.push_back(1);
+	l.push_back(2);
+	l.push_back(3);
+
+	List<int>	l1;
+	l1.push_back(1);
+	l1.push_back(2);
+	l1.push_back(3);
+
+	std::cout << "l == l1 : " << (l == l1) << std::endl;
 }
