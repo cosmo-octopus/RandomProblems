@@ -19,8 +19,6 @@ class	List
 
 				Node(void): data(0), next(nullptr){}
 				Node(const T &data): data(data), next(nullptr){}
-
-
 		};
 
 	private:
