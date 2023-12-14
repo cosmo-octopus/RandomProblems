@@ -12,5 +12,13 @@ int	main()
 	vec.push_back(4);
 
 	Iterator<int>	iter = vec.begin();
-	std::cout << "dereferance: " << *iter << std::endl;
+	std::cout << "dereference: " << *iter << std::endl;
+	std::cout << "iter[3]: " << iter[3] << std::endl;
+	// std::cout << "iter[10]: " << iter[10] << std::endl; // heap buffer overflow
+	std::cout << std::endl;
+	std::cout << "iterator++: " << *(iter++) << " " << *iter << std::endl;
+	std::cout << "++iterator: " << *(++iter) << " " << *iter << std::endl;
+	std::cout << std::endl;
+	std::cout << "--iterator: " << *(--iter) << " " << *iter << std::endl;
+	std::cout << "iterator--: " << *(iter--) << " " << *iter << std::endl;
 }

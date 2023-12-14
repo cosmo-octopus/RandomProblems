@@ -21,4 +21,36 @@ T	&Iterator<T>::operator[](size_t index)
 	return (ptr[index]);
 }
 
+template <typename T>
+Iterator<T>	&Iterator<T>::operator++(void)
+{
+	++this->ptr;
+	return (*this);
+}
+
+template <typename T>
+Iterator<T>	Iterator<T>::operator++(int)
+{
+	Iterator<T>	temp = *this;
+
+	this->ptr++;
+	return (temp);
+}
+
+template <typename T>
+Iterator<T>	&Iterator<T>::operator--(void)
+{
+	--this->ptr;
+	return (*this);
+}
+
+template <typename T>
+Iterator<T>	Iterator<T>::operator--(int)
+{
+	Iterator<T>	temp = *this;
+
+	--this->ptr;
+	return (temp);
+}
+
 #endif
