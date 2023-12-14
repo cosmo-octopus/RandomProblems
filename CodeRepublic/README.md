@@ -2,7 +2,7 @@
 
 ## Project List
 
-### Level-00
+### [Level-00](https://github.com/hheghine/RandomProblems/tree/main/CodeRepublic/Level-00)
 
 - Arrays and Functions
 - Matrices and Recursion
@@ -10,7 +10,7 @@
 - Math
 - Bitwise
 
-### Level-01
+### [Level-01](https://github.com/hheghine/RandomProblems/tree/main/CodeRepublic/Level-01)
 
   - `Containers`
 	- Vector Class Implementation
