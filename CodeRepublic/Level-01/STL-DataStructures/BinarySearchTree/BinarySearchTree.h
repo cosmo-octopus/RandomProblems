@@ -19,7 +19,7 @@ class	Tree
 				Node	*right;
 
 				Node(void):	data(0), left(nullptr), right(nullptr){}
-				Node(T data): data(data), left(nullptr), right(nullptr){}
+				Node(const T &data): data(data), left(nullptr), right(nullptr){}
 		};
 	
 	private:
