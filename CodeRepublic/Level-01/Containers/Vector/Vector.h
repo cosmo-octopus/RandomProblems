@@ -37,6 +37,8 @@ class	Vector
 		const T				&at(size_t index) const;
 		const T				&front(void) const;
 		const T				&back(void) const;
+		T					*begin(void) const;
+		T					*end(void) const;
 		const T				*data(void) const;
 		void				clear(void);
 		void				assign(size_t count, const T &value);

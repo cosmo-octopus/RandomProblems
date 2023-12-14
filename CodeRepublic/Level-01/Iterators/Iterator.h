@@ -1,7 +1,10 @@
 #ifndef __ITERATOR_H__
 # define __ITERATOR_H__
 
-# include "../Containers/Vector/Vector.h"
+# include <limits>
+# include <utility>
+# include <iostream>
+# include <stdexcept>
 
 template <typename T>
 class	Iterator
@@ -11,21 +14,22 @@ class	Iterator
 
 	public:
 		Iterator(void): ptr(nullptr){};
-		Iterator(const Iterator<T> &other);
+		Iterator(T	*ptr): ptr(ptr){};
+		Iterator(const Iterator<T> &other): ptr(other.ptr){};
 		~Iterator(){};
 
 		/* Dereferencing operator */
-		T			&operator*();
+		T			&operator*(void);
 		/* Member access operator */
-		T			*operator->();
+		T			*operator->(void);
 		/* Subscript operator (for random access iterators) */
-		T			&operator[](int index);
+		T			&operator[](size_t index);
 		/* Pre-increment operator */
-		Iterator<T>	&operator++();
+		Iterator<T>	&operator++(void);
 		/* Post-increment operator */
 		Iterator<T>	operator++(int);
 		/* Pre-decrement operator */
-		Iterator<T>	&operator--();
+		Iterator<T>	&operator--(void);
 		/* Post-decrement operator */
 		Iterator<T>	operator--(int);
 		/* Addition operator (for random access iterators) */

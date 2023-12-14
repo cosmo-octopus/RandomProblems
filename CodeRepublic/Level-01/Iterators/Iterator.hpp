@@ -3,6 +3,22 @@
 
 # include "Iterator.h"
 
+template <typename T>
+T	&Iterator<T>::operator*(void)
+{
+	return (*ptr);
+}
 
+template <typename T>
+T	*Iterator<T>::operator->(void)
+{
+	return (ptr);
+}
+
+template <typename T>
+T	&Iterator<T>::operator[](size_t index)
+{
+	return (ptr[index]);
+}
 
 #endif

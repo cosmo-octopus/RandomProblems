@@ -324,7 +324,7 @@ Vector<T>	&Vector<T>::operator=(const Vector &other)
 
 /* Move Assignment Operator */
 template<typename T>
-Vector<T>& Vector<T>::operator=(Vector&& other) noexcept
+Vector<T>&	Vector<T>::operator=(Vector&& other) noexcept
 {
     if (this != &other)
 	{
@@ -337,6 +337,18 @@ Vector<T>& Vector<T>::operator=(Vector&& other) noexcept
         other.array = nullptr;
     }
     return (*this);
+}
+
+template <typename T>
+T	*Vector<T>::begin(void) const
+{
+	return (this->array);
+}
+
+template <typename T>
+T	*Vector<T>::end(void) const
+{
+	return (this->array + this->size);
 }
 
 #endif
