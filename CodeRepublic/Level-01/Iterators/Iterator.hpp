@@ -53,4 +53,38 @@ Iterator<T>	Iterator<T>::operator--(int)
 	return (temp);
 }
 
+template <typename T>
+Iterator<T>	Iterator<T>::operator+(size_t n) const
+{
+	Iterator<T>	iter = *this;
+
+	for(size_t i = 0; i < n; i++)
+		++iter;
+	return (iter);
+}
+
+template <typename T>
+Iterator<T>	Iterator<T>::operator-(size_t n) const
+{
+	Iterator<T>	iter = *this;
+
+	for(size_t i = 0; i < n; i++)
+		--iter;
+	return (iter);
+}
+
+template <typename T>
+Iterator<T> &Iterator<T>::operator+= (size_t n)
+{
+	this->ptr = this->ptr + n;
+	return (*this);
+}
+
+template <typename T>
+Iterator<T> &Iterator<T>::operator-= (size_t n)
+{
+	this->ptr = this->ptr - n;
+	return (*this);
+}
+
 #endif

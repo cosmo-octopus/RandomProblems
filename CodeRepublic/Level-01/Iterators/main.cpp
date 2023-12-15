@@ -21,4 +21,11 @@ int	main()
 	std::cout << std::endl;
 	std::cout << "--iterator: " << *(--iter) << " " << *iter << std::endl;
 	std::cout << "iterator--: " << *(iter--) << " " << *iter << std::endl;
+	std::cout << "iter + 1: " << *(iter + 1) << "\n" << "iter + 2: "<< *(iter + 2) << std::endl;
+	std::cout << "++iter - 1: " << *(++iter - 1) << std::endl;
+	std::cout << "iter: " << *(iter) << std::endl;
+	iter += 2;
+	std::cout << "iter += 2: " << *iter << std::endl;
+	iter -= 1;
+	std::cout << "iter -= 1: " << *iter << std::endl;
 }

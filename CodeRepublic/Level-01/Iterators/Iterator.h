@@ -33,13 +33,13 @@ class	Iterator
 		/* Post-decrement operator */
 		Iterator<T>	operator--(int);
 		/* Addition operator (for random access iterators) */
-		Iterator<T>	operator+(int n) const;
+		Iterator<T>	operator+(size_t n) const;
 		/* Subtraction operator (for random access iterators) */
-		Iterator<T>	operator-(int n) const;
+		Iterator<T>	operator-(size_t n) const;
     	/* Compound addition operator (for random access iterators) */
-		Iterator<T>	&operator+=(int n);
+		Iterator<T>	&operator+=(size_t n);
 		/* Compound subtraction operator (for random access iterators) */
-		Iterator<T>	&operator-=(int n);
+		Iterator<T>	&operator-=(size_t n);
 		/* Equality comparison operator */
 		bool		operator==(const Iterator<T> &other) const;
 		/* Inequality comparison operator*/
@@ -47,22 +47,5 @@ class	Iterator
 };
 
 # include "Iterator.hpp"
-
-// Iterator	operator+(const size_t off)
-// {
-// 	Iterator	t = *this;
-// 	for(int i = 0; i <= off; i++)
-// 	{
-// 		++t;
-// 	}
-// 	return (t);
-// }
-
-// Iterator	&operator+= (const size_t off)
-// {
-// 	for (int i = 0; i < off; i++)
-// 		++(*this);
-// 	return (*this);
-// }
 
 #endif
