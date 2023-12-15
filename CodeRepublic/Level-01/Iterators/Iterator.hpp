@@ -87,4 +87,16 @@ Iterator<T> &Iterator<T>::operator-= (size_t n)
 	return (*this);
 }
 
+template <typename T>
+bool	Iterator<T>::operator==(const Iterator<T> &other) const
+{
+	return (this->ptr == other.ptr);
+}
+
+template <typename T>
+bool	Iterator<T>::operator!=(const Iterator<T> &other) const
+{
+	return (!(*this == other));
+}
+
 #endif
