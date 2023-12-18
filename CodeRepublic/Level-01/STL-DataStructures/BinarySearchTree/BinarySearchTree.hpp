@@ -4,12 +4,12 @@
 # include "BinarySearchTree.h"
 
 template <typename T>
-void	Tree<T>::destroyTree(typename Tree<T>::Node *node)
+void	Tree<T>::destroy(typename Tree<T>::Node *node)
 {
 	if (node)
 	{
-		destroyTree(node->left);
-		destroyTree(node->right);
+		destroy(node->left);
+		destroy(node->right);
 		delete node;
 	}
 }
@@ -17,14 +17,14 @@ void	Tree<T>::destroyTree(typename Tree<T>::Node *node)
 template <typename T>
 Tree<T>::~Tree()
 {
-	destroyTree(this->root);
+	destroy(this->root);
 	this->root = nullptr;
 }
 
 template <typename T>
-void	Tree<T>::addNode(const T &data)
+void	Tree<T>::insert(const T &value)
 {
-	Node	*node = new Node(data);
+	Node	*node = new Node(value);
     Node	*runner = this->root;
     Node	*prev = nullptr;
 
@@ -36,9 +36,9 @@ void	Tree<T>::addNode(const T &data)
     while (runner)
 	{
         prev = runner;
-        if (data > runner->data)
+        if (value > runner->value)
             runner = runner->right;
-        else if (data < runner->data)
+        else if (value < runner->value)
             runner = runner->left;
         else
 		{
@@ -46,34 +46,126 @@ void	Tree<T>::addNode(const T &data)
             return;
         }
     }
-    if (data > prev->data)
+    if (value > prev->value)
         prev->right = node;
     else
         prev->left = node;
 }
 
-template <typename T>
-void	Tree<T>::printTree(typename Tree<T>::Node *node, int space) const
+template<typename T>
+void Tree<T>::graphical(void) const
 {
-	if (!node)
-		return ;
-	space += 5;
-	printTree(node->right, space);
-	std::cout << std::endl;
-	for (int i = 5; i < space; i++)
+    if (!this->root)
 	{
-		std::cout << " ";
-	}
-	std::cout << "[" << node->data << "]" << "\n";
-	printTree(node->left, space);
+        std::cout << "The tree is empty." << std::endl;
+        return ;
+    }
+    graphical(root, "");
+}
+
+template<typename T>
+void Tree<T>::graphical(typename Tree<T>::Node* node, std::string prefix) const
+{
+    constexpr int spacing = 5;
+
+    if (!node)
+        return ;
+    graphical(node->right, prefix + std::string(spacing, ' '));
+    std::cout << prefix << "|-- " << node->value << std::endl;
+    graphical(node->left, prefix + std::string(spacing, ' '));
 }
 
 template <typename T>
-void	Tree<T>::printTree(void) const
+bool	Tree<T>::search(const T &value) const
 {
 	if (!this->root)
-		throw std::out_of_range("Tree is empty");
-	printTree(this->root, 0);
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return (false);
+	}
+	return (search(this->root, value));
+}
+
+template <typename T>
+bool	Tree<T>::search(typename Tree<T>::Node *node, const T &value) const
+{
+	if (!node)
+        return (false);
+
+    if (node->value == value)
+        return true;
+    if (value < node->value)
+        return search(node->left, value);
+    else
+        return search(node->right, value);
+}
+
+template <typename T>
+void	Tree<T>::inorder(void) const
+{
+	if (!this->root)
+		std::cout << "Tree is empty" << std::endl;
+	inorder(this->root);
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	Tree<T>::inorder(typename Tree<T>::Node *node) const
+{
+	if (node)
+	{
+		inorder(node->left);
+		if (node == this->root)
+			std::cout << "[" << node->value << "]" << " ";
+		else
+			std::cout << node->value << " ";
+		inorder(node->right);
+	}
+}
+
+template <typename T>
+void	Tree<T>::preorder(void) const
+{
+	if (!this->root)
+		std::cout << "Tree is empty" << std::endl;
+	preorder(this->root);
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	Tree<T>::preorder(typename Tree<T>::Node *node) const
+{
+	if (node)
+	{
+		if (node == this->root)
+			std::cout << "[" << node->value << "]" << " ";
+		else
+			std::cout << node->value << " ";
+		inorder(node->left);
+		inorder(node->right);
+	}
+}
+
+template <typename T>
+void	Tree<T>::postorder(void) const
+{
+	if (!this->root)
+		std::cout << "Tree is empty" << std::endl;
+	postorder(this->root);
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	Tree<T>::postorder(typename Tree<T>::Node *node) const
+{
+	if (node)
+	{
+		if (node != this->root)
+			std::cout << node->value << " ";
+		inorder(node->left);
+		inorder(node->right);
+		std::cout << "[" << node->value << "]" << " ";
+	}
 }
 
 #endif
