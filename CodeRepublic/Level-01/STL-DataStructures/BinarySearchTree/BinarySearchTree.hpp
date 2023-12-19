@@ -168,4 +168,176 @@ void	Tree<T>::postorder(typename Tree<T>::Node *node) const
 	}
 }
 
+template <typename T>
+T	Tree<T>::find_min(void) const
+{
+	if (!this->root)
+		std::cout << "Tree is empty" << std::endl;
+	return (find_min(this->root));
+}
+
+template <typename T>
+T	Tree<T>::find_min(typename Tree<T>::Node *node) const
+{
+	if (!node->left)
+		return (node->value);
+	return (find_min(node->left));
+}
+
+template <typename T>
+T	Tree<T>::find_max(void) const
+{
+	if (!this->root)
+		std::cout << "Tree is empty" << std::endl;
+	return (find_max(this->root));
+}
+
+template <typename T>
+T	Tree<T>::find_max(typename Tree<T>::Node *node) const
+{
+	if (!node->right)
+		return (node->value);
+	return (find_max(node->right));
+}
+
+template <typename T>
+typename Tree<T>::Node	*Tree<T>::find(typename Tree<T>::Node *node, const T &value) const
+{
+	if (node->value == value)
+		return (node);
+	if (value < node->value)
+		return (find(node->left, value));
+	else
+		return (find(node->right, value));
+}
+
+/* leftmost node of the right subtree*/
+template <typename T>
+T	Tree<T>::successor(const T &value) const
+{
+	Node	*node;
+
+	if (!search(value))
+		return (0);
+	node = find(this->root, value);
+	return (find_min(node->right));
+}
+
+/* rightmost node of the left subtree */
+template <typename T>
+T	Tree<T>::predecessor(const T &value) const
+{
+	Node	*node;
+
+	if (!search(value))
+		return (0);
+	node = find(this->root, value);
+	return (find_max(node->left));
+}
+
+template <typename T>
+size_t	Tree<T>::height(void) const
+{
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return (0);
+	}
+	return (height(this->root));
+}
+
+template <typename T>
+size_t	Tree<T>::height(typename Tree<T>::Node *node) const
+{
+	size_t	left;
+	size_t	right;
+
+	if (!node)
+		return (0);
+	left = height(node->left);
+	right = height(node->right);
+	return (1 + std::max(left, right));
+}
+
+template <typename T>
+size_t	Tree<T>::size(void) const
+{
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return (0);
+	}
+	return (size(this->root));
+}
+
+template <typename T>
+size_t	Tree<T>::size(typename Tree<T>::Node *node) const
+{
+	int	left;
+	int	right;
+
+	if (!node)
+		return (0);
+	left = size(node->left);
+	right = size(node->right);
+	
+	return (1 + left + right);
+}
+
+template <typename T>
+bool	Tree<T>::valid(void) const
+{
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return (false);
+	}
+	return (valid(this->root));
+}
+
+template <typename T>
+bool	Tree<T>::valid(typename Tree<T>::Node *node) const
+{
+	if (!node)
+		return (true);
+	if (node->left && node->left->value > node->value)
+		return (false);
+	if (node->right && node->right->value < node->value)
+		return (false);
+	return (valid(node->left) && valid(node->right));
+}
+
+template <typename T>
+void	Tree<T>::level_order(void) const
+{
+	size_t	h;
+
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return ;
+	}
+	h = height();
+	for (size_t level = 0; level < h; level++)
+	{
+		std::cout << "level" << level << ": ";
+		this_level(this->root, level);
+		std::cout << std::endl;
+	}
+}
+
+template <typename T>
+void	Tree<T>::this_level(typename Tree<T>::Node *node, size_t level) const
+{
+	if (!node)
+		return ;
+	if (level == 0)
+		std::cout << node->value << " ";
+	else if (level > 0)
+	{
+		this_level(node->left, level - 1);
+		this_level(node->right, level - 1);
+	}
+}
+
 #endif

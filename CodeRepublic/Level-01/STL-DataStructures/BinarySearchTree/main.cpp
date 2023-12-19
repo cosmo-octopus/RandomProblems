@@ -24,4 +24,13 @@ int	main()
 	tree.preorder();
 	std::cout << "postorder: ";
 	tree.postorder();
+	std::cout << "minimum: " << tree.find_min() << std::endl;
+	std::cout << "maximum: " << tree.find_max() << std::endl;
+	std::cout << "successor of 42: " << tree.successor(42) << std::endl;
+	std::cout << "predecessor of 42: " << tree.predecessor(42) << std::endl;
+	std::cout << "tree height: " << tree.height() << std::endl;
+	std::cout << "tree size: " << tree.size() << std::endl;
+	std::cout << "is my binary search tree valid: " << tree.valid() << std::endl;
+	std::cout << "\ntree by levels: " << std::endl;
+	tree.level_order();
 }
