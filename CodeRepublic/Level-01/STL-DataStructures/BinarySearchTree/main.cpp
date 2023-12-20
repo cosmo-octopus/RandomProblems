@@ -31,6 +31,7 @@ int	main()
 	std::cout << "tree height: " << tree.height() << std::endl;
 	std::cout << "tree size: " << tree.size() << std::endl;
 	std::cout << "is my binary search tree valid: " << tree.valid() << std::endl;
-	std::cout << "\ntree by levels: " << std::endl;
+	std::cout << "tree by levels: " << std::endl;
 	tree.level_order();
+	std::cout << "find height for 13: " << tree.height(13) << std::endl;
 }

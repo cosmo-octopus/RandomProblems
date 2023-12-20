@@ -41,6 +41,7 @@ class	Tree
 		T		successor(const T &value) const;
 		T		predecessor(const T &value) const;
 		size_t	height(void) const;
+		size_t	height(const T &value) const;
 		size_t	size(void) const;
 		bool	valid(void) const;
 		void	level_order(void) const; /* prints the tree by levels */

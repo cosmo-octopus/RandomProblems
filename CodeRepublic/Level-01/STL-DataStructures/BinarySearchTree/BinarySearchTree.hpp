@@ -247,6 +247,20 @@ size_t	Tree<T>::height(void) const
 }
 
 template <typename T>
+size_t	Tree<T>::height(const T &value) const
+{
+	Node	*node;
+
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return (0);
+	}
+	node = find(this->root, value);
+	return (height(node));
+}
+
+template <typename T>
 size_t	Tree<T>::height(typename Tree<T>::Node *node) const
 {
 	size_t	left;
