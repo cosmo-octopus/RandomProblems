@@ -354,4 +354,61 @@ void	Tree<T>::this_level(typename Tree<T>::Node *node, size_t level) const
 	}
 }
 
+template <typename T>
+void	Tree<T>::remove(const T &value)
+{
+	if (!this->root)
+	{
+		std::cout << "Tree is empty" << std::endl;
+		return ;
+	}
+	remove(this->root, value);
+}
+
+template <typename T>
+typename Tree<T>::Node	*Tree<T>::remove(typename Tree<T>::Node *node, const T &value)
+{
+	Node	*tmp;
+
+    if (!node)
+        return node;
+
+    if (value < node->value)
+        node->left = remove(node->left, value);
+	else if (value > node->value)
+        node->right = remove(node->right, value);
+	else
+	{
+        if (!node->left)
+		{
+            tmp = node->right;
+            delete node;
+            return (tmp);
+        }
+		else if (!node->right)
+		{
+            tmp = node->left;
+            delete node;
+            return (tmp);
+        }
+		else
+		{
+            tmp = smallerNode(node->right);
+            node->value = tmp->value;
+            node->right = remove(node->right, tmp->value);
+        }
+    }
+    return (node);
+}
+
+template <typename T>
+typename Tree<T>::Node	*Tree<T>::smallerNode(typename Tree<T>::Node *node)
+{
+    if (!node)
+        return nullptr;
+    if (!node->left)
+        return node;
+    return smallerNode(node->left);
+}
+
 #endif

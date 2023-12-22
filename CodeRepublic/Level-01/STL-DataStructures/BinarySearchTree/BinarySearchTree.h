@@ -45,6 +45,7 @@ class	Tree
 		size_t	size(void) const;
 		bool	valid(void) const;
 		void	level_order(void) const; /* prints the tree by levels */
+		void	remove(const T &value);
 
 	private:
 		void	destroy(Node *node);
@@ -60,10 +61,11 @@ class	Tree
 		size_t	size(Node *node) const;
 		bool	valid(Node	*node) const;
 		void	this_level(Node *node, size_t level) const;
+		Node	*smallerNode(Node *node);
+		Node	*remove(Node *node, const T &value);
 };
 
 // delete(value): Ծառից հեռացնել value արժեքով node-ը.
-// clear(): Ջնջել ծառի բոլոր հանգույցները
 // serialize(): Ձևափոխել ծառի պարունակությունը ավելի հարմար տեսքի(array, string)
 // range_query(start, end): Գտնել բոլոր հանգույցները տրված միջակայքի արժեքներով։
 // copy(): Ստեղծել նոր ծառ, նույն կառուցվածքով և արժեքներով և վերադարձնել։

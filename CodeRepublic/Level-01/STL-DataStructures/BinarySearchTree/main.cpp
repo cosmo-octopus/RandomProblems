@@ -34,4 +34,6 @@ int	main()
 	std::cout << "tree by levels: " << std::endl;
 	tree.level_order();
 	std::cout << "find height for 13: " << tree.height(13) << std::endl;
+	tree.remove(12);
+	tree.graphical();
 }
