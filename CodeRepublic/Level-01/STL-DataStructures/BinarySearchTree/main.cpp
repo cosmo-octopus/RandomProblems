@@ -43,4 +43,10 @@ int	main()
 	std::cout << std::endl;
 	delete [] arr;
 	tree.range_query(5, 40);
+	// std::cout << "copy constructor check:" << std::endl;
+	// Tree<int>	other(tree);
+	// other.graphical();
+	std::cout << "4th smallest element: " << tree.kth_smallest(4) << std::endl;
+	std::cout << "9th smallest element: " << tree.kth_smallest(9) << std::endl;
+	std::cout << "4th largest element: " << tree.kth_largest(4) << std::endl;
 }

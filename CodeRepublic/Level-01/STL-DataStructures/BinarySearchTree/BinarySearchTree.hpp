@@ -24,22 +24,22 @@ Tree<T>::~Tree()
 template <typename T>
 void	Tree<T>::insert(const T &value)
 {
-	insert(this->root, value);
+	insert(&this->root, value);
 }
 
 template <typename T>
-void	Tree<T>::insert(typename Tree<T>::Node *&node, const T &value)
+void	Tree<T>::insert(typename Tree<T>::Node **node, const T &value) // could be (Node *&node)
 {
-	if (!node)
+	if (!*node)
 	{
-		node = new Node(value);
+		*node = new Node(value);
 		return ;
 	}
 
-	if (value < node->value)
-		insert(node->left, value);
-	else if (value > node->value)
-		insert(node->right, value);
+	if (value < (*node)->value)
+		insert(&(*node)->left, value);
+	else if (value > (*node)->value)
+		insert(&(*node)->right, value);
 }
 
 template<typename T>
@@ -447,6 +447,92 @@ void	Tree<T>::range_query(typename Tree<T>::Node *node, const T &start, const T 
 		range_query(node->left, start, end);
 	if (node->value < end)
 		range_query(node->right, start, end);
+}
+
+/* copy constructor */
+template <typename T>
+Tree<T>::Tree(const Tree &other)
+{
+	size_t	h = other.height();
+
+	for (size_t level = 0; level < h; level++)
+		levelInsert(other.root, level);
+}
+
+template <typename T>
+void	Tree<T>::levelInsert(typename Tree<T>::Node *node, size_t level)
+{
+	if (!node)
+		return ;
+	if (level == 0)
+		insert(node->value);
+	else if (level > 0)
+	{
+		levelInsert(node->left, level - 1);
+		levelInsert(node->right, level - 1);
+	}
+}
+
+template <typename T>
+T	Tree<T>::kth_smallest(size_t k) const
+{
+	size_t	s = size();
+	size_t	count = k;
+
+	if (!s || k > s || !k)
+	{
+		std::cout << "Error: invalid number" << std::endl;
+		return (0);
+	}
+	if (k == 1)
+		return (find_min());
+	return (kth_smallest(this->root, count));
+}
+
+template <typename T>
+T	Tree<T>::kth_smallest(typename Tree<T>::Node *node, size_t &k) const
+{
+	T	value;
+
+	if (!node)
+		return (0);
+	value = kth_smallest(node->left, k);
+	if (k == 0)
+		return (value);
+	if (--k == 0)
+		return (node->value);
+	return (kth_smallest(node->right, k));
+}
+
+template <typename T>
+T	Tree<T>::kth_largest(size_t k) const
+{
+	size_t	s = size();
+	size_t	count = k;
+
+	if (!s || k > s || !k)
+	{
+		std::cout << "Error: invalid number" << std::endl;
+		return (0);
+	}
+	if (k == 1)
+		return (find_max());
+	return (kth_largest(this->root, count));
+}
+
+template <typename T>
+T	Tree<T>::kth_largest(typename Tree<T>::Node *node, size_t &k) const
+{
+	T	value;
+
+	if (!node)
+		return (0);
+	value = kth_largest(node->right, k);
+	if (k == 0)
+		return (value);
+	if (--k == 0)
+		return (node->value);
+	return (kth_largest(node->left, k));
 }
 
 #endif
