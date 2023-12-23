@@ -24,32 +24,22 @@ Tree<T>::~Tree()
 template <typename T>
 void	Tree<T>::insert(const T &value)
 {
-	Node	*node = new Node(value);
-    Node	*runner = this->root;
-    Node	*prev = nullptr;
+	insert(this->root, value);
+}
 
-    if (!runner)
+template <typename T>
+void	Tree<T>::insert(typename Tree<T>::Node *&node, const T &value)
+{
+	if (!node)
 	{
-        this->root = node;
-        return;
-    }
-    while (runner)
-	{
-        prev = runner;
-        if (value > runner->value)
-            runner = runner->right;
-        else if (value < runner->value)
-            runner = runner->left;
-        else
-		{
-            delete node;
-            return;
-        }
-    }
-    if (value > prev->value)
-        prev->right = node;
-    else
-        prev->left = node;
+		node = new Node(value);
+		return ;
+	}
+
+	if (value < node->value)
+		insert(node->left, value);
+	else if (value > node->value)
+		insert(node->right, value);
 }
 
 template<typename T>
@@ -95,9 +85,9 @@ bool	Tree<T>::search(typename Tree<T>::Node *node, const T &value) const
     if (node->value == value)
         return true;
     if (value < node->value)
-        return search(node->left, value);
+        return (search(node->left, value));
     else
-        return search(node->right, value);
+        return (search(node->right, value));
 }
 
 template <typename T>
@@ -141,8 +131,8 @@ void	Tree<T>::preorder(typename Tree<T>::Node *node) const
 			std::cout << "[" << node->value << "]" << " ";
 		else
 			std::cout << node->value << " ";
-		inorder(node->left);
-		inorder(node->right);
+		preorder(node->left);
+		preorder(node->right);
 	}
 }
 
@@ -162,9 +152,10 @@ void	Tree<T>::postorder(typename Tree<T>::Node *node) const
 	{
 		if (node != this->root)
 			std::cout << node->value << " ";
-		inorder(node->left);
-		inorder(node->right);
-		std::cout << "[" << node->value << "]" << " ";
+		postorder(node->left);
+		postorder(node->right);
+		if (node == this->root)
+			std::cout << "[" << node->value << "]" << " ";
 	}
 }
 
@@ -409,6 +400,53 @@ typename Tree<T>::Node	*Tree<T>::smallerNode(typename Tree<T>::Node *node)
     if (!node->left)
         return node;
     return smallerNode(node->left);
+}
+
+template <typename T>
+T*	Tree<T>::serialise(void)
+{
+	size_t	h = height();
+	size_t	s = size();
+	int		i = 0;
+	T		*data = new T[s];
+
+	for (size_t level = 0; level < h; level++)
+		this_level(this->root, level, data, i);
+	return (data);
+}
+
+template <typename T>
+void	Tree<T>::this_level(typename Tree<T>::Node *node, size_t level, T *data, int &i)
+{
+	if (!node)
+		return ;
+	if (level == 0)
+		data[i++] = node->value;
+	else if (level > 0)
+	{
+		this_level(node->left, level - 1, data, i);
+		this_level(node->right, level - 1, data, i);
+	}
+}
+
+template <typename T>
+void	Tree<T>::range_query(const T &start, const T &end)
+{
+	range_query(this->root, start, end);
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	Tree<T>::range_query(typename Tree<T>::Node *node, const T &start, const T &end)
+{
+	if (!node)
+		return ;
+	if (node->value >= start && node->value < end)
+		std::cout << node->value << " ";
+	if (node->value > start)
+		range_query(node->left, start, end);
+	if (node->value < end)
+		range_query(node->right, start, end);
 }
 
 #endif

@@ -36,4 +36,11 @@ int	main()
 	std::cout << "find height for 13: " << tree.height(13) << std::endl;
 	tree.remove(12);
 	tree.graphical();
+	int	*arr = tree.serialise();
+	int	s = tree.size();
+	for (int i = 0; i < s; i++)
+		std::cout << arr[i] << " ";
+	std::cout << std::endl;
+	delete [] arr;
+	tree.range_query(5, 40);
 }

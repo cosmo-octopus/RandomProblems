@@ -46,8 +46,11 @@ class	Tree
 		bool	valid(void) const;
 		void	level_order(void) const; /* prints the tree by levels */
 		void	remove(const T &value);
+		T*		serialise(void);
+		void	range_query(const T &start, const T &end);
 
 	private:
+		void	insert(typename Tree<T>::Node *&node, const T &value);
 		void	destroy(Node *node);
 		void	graphical(typename Tree<T>::Node* node, std::string prefix) const;
 		bool	search(typename Tree<T>::Node *node, const T &value) const;
@@ -63,11 +66,10 @@ class	Tree
 		void	this_level(Node *node, size_t level) const;
 		Node	*smallerNode(Node *node);
 		Node	*remove(Node *node, const T &value);
+		void	this_level(Node *node, size_t level, T *data, int &i);
+		void	range_query(Node *node, const T &start, const T &end);
 };
 
-// delete(value): Ծառից հեռացնել value արժեքով node-ը.
-// serialize(): Ձևափոխել ծառի պարունակությունը ավելի հարմար տեսքի(array, string)
-// range_query(start, end): Գտնել բոլոր հանգույցները տրված միջակայքի արժեքներով։
 // copy(): Ստեղծել նոր ծառ, նույն կառուցվածքով և արժեքներով և վերադարձնել։
 // kth_smallest(k): Գտնել և վերադարձնել k-րդ ամենափոքր էլեմենտը։
 // kth_largest(k): Գտնել և վերադարձնել k-րդ ամենամեծ էլեմենտը։
