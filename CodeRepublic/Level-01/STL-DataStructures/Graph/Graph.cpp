@@ -38,3 +38,35 @@ void	Graph::display(void)
         std::cout << std::endl;
     }
 }
+
+std::vector<int>	Graph::shortest(int start, int end)
+{
+	std::unordered_set<int>	visited;
+	std::vector<int>		path;
+	std::vector<int>		shortPath;
+
+	return (dfs(start, end, visited, path, shortPath));
+}
+
+std::vector<int> Graph::dfs(int curr, int dst, std::unordered_set<int> &v, std::vector<int> &p, std::vector<int> &sh)
+{
+    v.insert(curr);
+    p.push_back(curr);
+
+    if (curr == dst)
+    {
+        if (sh.empty() || p.size() < sh.size())
+            sh = p;
+    }
+    else
+    {
+        for (int edge : graph[curr])
+        {
+            if (v.find(edge) == v.end())
+                dfs(edge, dst, v, p, sh);
+        }
+    }
+    p.pop_back();
+    v.erase(curr);
+    return sh;
+}

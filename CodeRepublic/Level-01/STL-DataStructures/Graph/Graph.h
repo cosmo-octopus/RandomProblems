@@ -6,6 +6,7 @@
 # include <algorithm>
 # include <cstdlib>
 # include <ctime>
+#include <bits/stdc++.h>
 
 class	Graph
 {
@@ -14,10 +15,12 @@ class	Graph
 		unsigned int					vertex;
 	public:
 		Graph(void);
-		// Graph(int vertex);
 		~Graph();
 
-		void	display(void);
+		void				display(void);
+		std::vector<int>	shortest(int start, int end);
+	private:
+		std::vector<int>	dfs(int, int, std::unordered_set<int>&, std::vector<int>&, std::vector<int>&);
 };
 
 #endif
