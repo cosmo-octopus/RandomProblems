@@ -2,15 +2,15 @@
 
 Graph::Graph(void): vertex(10)
 {
-	unsigned int	edges;
-	unsigned int	randomVertex;
+	size_t	edges;
+	size_t	randomVertex;
 
 	graph.resize(vertex);
 	srand(static_cast<unsigned int>(time(0)));
-	for (unsigned int i = 0; i < vertex; i++)
+	for (size_t i = 0; i < vertex; i++)
 	{
 		edges = 1 + (rand() % 4);
-		for (unsigned int j = 0; j < edges; j++)
+		for (size_t j = 0; j < edges; j++)
 		{
 			randomVertex = rand() % 10;
 			if (randomVertex != i)
@@ -23,7 +23,7 @@ Graph::Graph(void): vertex(10)
 
 Graph::~Graph()
 {
-	for (int i = 0; i < 10; i++)
+	for (size_t i = 0; i < vertex; i++)
 		graph[i].clear();
 }
 
@@ -60,13 +60,28 @@ std::vector<int> Graph::dfs(int curr, int dst, std::unordered_set<int> &v, std::
     }
     else
     {
-        for (int edge : graph[curr])
+        for (int neighbour : graph[curr])
         {
-            if (v.find(edge) == v.end())
-                dfs(edge, dst, v, p, sh);
+            if (v.find(neighbour) == v.end())
+                dfs(neighbour, dst, v, p, sh);
         }
     }
     p.pop_back();
     v.erase(curr);
     return sh;
+}
+
+bool	Graph::has_edge(const int &v1, const int &v2) const
+{
+	for (int neighbour : graph[v1])
+	{
+		if (neighbour == v2)
+			return (true);
+	}
+	return (false);
+}
+
+size_t	Graph::vertex_cout(void) const
+{
+	return (this->vertex);
 }
