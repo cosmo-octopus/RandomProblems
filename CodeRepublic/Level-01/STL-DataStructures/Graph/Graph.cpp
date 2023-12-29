@@ -68,7 +68,7 @@ std::vector<int> Graph::dfs(int curr, int dst, std::unordered_set<int> &v, std::
     }
     p.pop_back();
     v.erase(curr);
-    return sh;
+    return (sh);
 }
 
 bool	Graph::has_edge(const int &v1, const int &v2) const
@@ -84,4 +84,18 @@ bool	Graph::has_edge(const int &v1, const int &v2) const
 size_t	Graph::vertex_cout(void) const
 {
 	return (this->vertex);
+}
+
+bool	Graph::has_vertex(const int &v) const
+{
+	if (v >=0 && v < this->vertex)
+		return (true);
+	return (false);
+}
+
+std::vector<int>	Graph::get_neighbours(const int &v) const
+{
+	if (!has_vertex(v))
+		throw std::invalid_argument("Error: vertex doesn't exist");
+	return (graph[v]);
 }

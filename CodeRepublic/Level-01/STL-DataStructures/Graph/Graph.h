@@ -18,9 +18,11 @@ class	Graph
 		~Graph();
 
 		void				display(void);
-		std::vector<int>	shortest(int start, int end);
 		bool				has_edge(const int &v1, const int &v2) const;
+		bool				has_vertex(const int &v) const;
 		size_t				vertex_cout(void) const;
+		std::vector<int>	shortest(int start, int end);
+		std::vector<int>	get_neighbours(const int &v) const;
 		// void				remove_vertex(const int &vertex);
 	private:
 		std::vector<int>	dfs(int, int, std::unordered_set<int>&, std::vector<int>&, std::vector<int>&);
@@ -36,5 +38,6 @@ class	Graph
 // connected_components(): Find the connected components of the graph.
 // bfs() unordred_set, queue
 // dextra's algorithm
+// std::pair<int, int>
 
 #endif
