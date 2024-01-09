@@ -18,6 +18,7 @@
    	- Stack Class Implementation
    	- Queue Class Implementation
    	- List Class Implementation
+	- Pair Class Implementation
   - `Iterators`
   - `STL Data Structures`
     - Binary Search Tree
