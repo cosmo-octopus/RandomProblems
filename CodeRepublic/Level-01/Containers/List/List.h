@@ -21,6 +21,91 @@ class	List
 				Node(const T &data): data(data), next(nullptr){}
 		};
 
+		/* iterators */
+		class Iterator
+		{
+			public:
+				Node	*current;
+
+				Iterator(Node *node) : current(node) {}
+
+				T	&operator*() const
+				{
+					return (current->data);
+				}
+
+				Iterator	&operator++()
+				{
+					current = current->next;
+					return (*this);
+				}
+
+				Iterator	operator++(int)
+				{
+					Iterator temp = *this;
+					++(*this);
+					return (temp);
+				}
+
+				bool operator==(const Iterator& other) const
+				{
+					return (current == other.current);
+				}
+
+				bool operator!=(const Iterator& other) const
+				{
+					return (!(*this == other));
+				}
+		};
+
+		class ReverseIterator
+		{
+			public:
+				Node	*current;
+				Node	*head;
+
+				ReverseIterator(Node* node, Node* head) : current(node), head(head) {}
+
+				T	&operator*() const
+				{
+					return current->data;
+				}
+
+				ReverseIterator	&operator++()
+				{
+					if (current == nullptr)
+						return *this;
+
+					Node* temp = head;
+					while (temp != nullptr && temp->next != current)
+						temp = temp->next;
+
+					if (temp != nullptr)
+						current = temp;
+					else
+						current = nullptr;
+
+					return (*this);
+				}
+
+				ReverseIterator	operator++(int)
+				{
+					ReverseIterator	temp = *this;
+					++(*this);
+					return (temp);
+				}
+
+				bool operator==(const ReverseIterator& other) const
+				{
+					return (current == other.current);
+				}
+
+				bool operator!=(const ReverseIterator& other) const
+				{
+					return !(*this == other);
+				}
+		};
+
 	private:
 		Node	*head;
 		Node	*tail;
@@ -46,6 +131,39 @@ class	List
 		void	sort(void);
 		void	reverse(void);
 		void	swap(List<T> &other);
+
+		/* iterators */
+		Iterator begin() {
+        return Iterator(head);
+    	}
+
+		Iterator end() {
+			return Iterator(nullptr);
+		}
+
+		ReverseIterator rbegin() {
+			return ReverseIterator(tail, head);
+		}
+
+		ReverseIterator rend() {
+			return ReverseIterator(nullptr, head);
+		}
+
+		const Iterator cbegin() const {
+			return Iterator(head);
+		}
+
+		const Iterator cend() const {
+			return Iterator(nullptr);
+		}
+
+		const ReverseIterator crbegin() const {
+			return ReverseIterator(tail, head);
+		}
+
+		const ReverseIterator crend() const {
+			return ReverseIterator(nullptr, head);
+		};
 
 		/*  operators  */
 		List<T>	&operator= (const List &list);

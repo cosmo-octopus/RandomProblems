@@ -50,4 +50,24 @@ int	main()
 	l1.push_back(3);
 
 	std::cout << "l == l1 : " << (l == l1) << std::endl;
+
+	std::cout << "Iterating through the list using regular iterators:\n";
+    for (auto it = list.begin(); it != list.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << "\n";
+
+    std::cout << "Iterating through the list using reverse iterators:\n";
+    for (auto it = list.rbegin(); it != list.rend(); ++it)
+        std::cout << *it << " ";
+    std::cout << "\n";
+
+    std::cout << "Iterating through the list using const iterators:\n";
+    for (auto it = list.cbegin(); it != list.cend(); ++it)
+        std::cout << *it << " ";
+    std::cout << "\n";
+
+    std::cout << "Iterating through the list using const reverse iterators:\n";
+    for (auto it = list.crbegin(); it != list.crend(); ++it)
+        std::cout << *it << " ";
+    std::cout << "\n";
 }
