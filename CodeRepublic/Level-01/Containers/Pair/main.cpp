@@ -42,4 +42,10 @@ int	main()
     std::cout << "After swapping:" << std::endl;
     std::cout << "First pair: " << pair1.getFirst() << ", " << pair1.getSecond() << std::endl;
     std::cout << "Second pair: " << pair2.getFirst() << ", " << pair2.getSecond() << std::endl;
+
+    Pair<int, double>   new_pair = make_pair(3, 3.14);
+
+    std::cout << "make_pair test" << std::endl;
+    std::cout << "New pair: " << new_pair.getFirst() << ", " << new_pair.getSecond() << std::endl;
+
 }

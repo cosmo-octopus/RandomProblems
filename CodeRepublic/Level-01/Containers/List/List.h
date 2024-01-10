@@ -133,35 +133,43 @@ class	List
 		void	swap(List<T> &other);
 
 		/* iterators */
-		Iterator begin() {
+		Iterator begin()
+		{
         return Iterator(head);
     	}
 
-		Iterator end() {
+		Iterator end()
+		{
 			return Iterator(nullptr);
 		}
 
-		ReverseIterator rbegin() {
+		ReverseIterator rbegin()
+		{
 			return ReverseIterator(tail, head);
 		}
 
-		ReverseIterator rend() {
+		ReverseIterator rend()
+		{
 			return ReverseIterator(nullptr, head);
 		}
 
-		const Iterator cbegin() const {
+		const Iterator cbegin() const
+		{
 			return Iterator(head);
 		}
 
-		const Iterator cend() const {
+		const Iterator cend() const
+		{
 			return Iterator(nullptr);
 		}
 
-		const ReverseIterator crbegin() const {
+		const ReverseIterator crbegin() const
+		{
 			return ReverseIterator(tail, head);
 		}
 
-		const ReverseIterator crend() const {
+		const ReverseIterator crend() const
+		{
 			return ReverseIterator(nullptr, head);
 		};
 

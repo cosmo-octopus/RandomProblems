@@ -15,11 +15,14 @@ class	Pair
 		Pair(void): first(0), second(0) {}
 		Pair(const T1 &f, const T2 &s): first(f), second(s){}
 
-		T1		getFirst(void) const;
-		T2		getSecond(void) const;
-		void	setFirst(const T1 &value);
-		void	setSecond(const T2 &value);
-		void	print(void) const;
+		T1			getFirst(void) const;
+		T2			getSecond(void) const;
+		void		setFirst(const T1 &value);
+		void		setSecond(const T2 &value);
+		void		print(void) const;
+
+		template <typename U1, typename U2>
+		friend Pair	make_pair(U1 x, U2 y);
 
 		/* Non-member function overloads */
 		template <typename U1, typename U2>

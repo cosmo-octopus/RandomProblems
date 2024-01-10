@@ -61,4 +61,10 @@ bool operator<(const Pair<T1, T2> &lhs, const Pair<T1, T2> &rhs)
     return (lhs.second < rhs.second);
 }
 
+template <typename T1, typename T2>
+Pair<T1, T2>	make_pair(T1 x, T2 y)
+{
+	return (Pair(x, y));
+}
+
 #endif
