@@ -67,4 +67,11 @@ Pair<T1, T2>	make_pair(T1 x, T2 y)
 	return (Pair(x, y));
 }
 
+template <typename T1, typename T2>
+std::ostream &operator <<(std::ostream &os, const Pair<T1, T2> &p)
+{
+	std::cout << "[ " << p.getFirst() << ", " << p.getSecond() << " ]";
+	return (os);
+}
+
 #endif

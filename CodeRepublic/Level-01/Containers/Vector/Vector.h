@@ -55,6 +55,7 @@ class	Vector
 		friend std::ostream &operator<<(std::ostream &os, const Vector<U> &vec);
 		Vector<T>			&operator=(const Vector &other);
 		Vector<T>			&operator=(Vector&& other) noexcept;
+		const T				&operator[](size_t index) const;
 };
 
 /***************************************************************/

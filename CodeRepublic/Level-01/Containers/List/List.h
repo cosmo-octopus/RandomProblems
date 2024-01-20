@@ -115,6 +115,15 @@ class	List
 	public:
 		List(void);
 		~List();
+		List(const List& other) : head(nullptr), tail(nullptr), size(0)
+		{
+			Node* temp = other.head;
+			while (temp != nullptr)
+			{
+				push_back(temp->data);
+				temp = temp->next;
+			}
+		}
 
 		void	push_back(const T &data);
 		void	push_front(const T &data);
@@ -135,7 +144,7 @@ class	List
 		/* iterators */
 		Iterator begin()
 		{
-        return Iterator(head);
+        	return Iterator(head);
     	}
 
 		Iterator end()

@@ -24,6 +24,9 @@ class	Pair
 		template <typename U1, typename U2>
 		friend Pair	make_pair(U1 x, U2 y);
 
+		template <typename U1, typename U2>
+		friend std::ostream	&operator <<(std::ostream &os, const Pair<U1, U2> &p);
+
 		/* Non-member function overloads */
 		template <typename U1, typename U2>
 		friend void swap(Pair<U1, U2>& a, Pair<U1, U2>& b);

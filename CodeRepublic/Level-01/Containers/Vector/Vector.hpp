@@ -351,4 +351,12 @@ T	*Vector<T>::end(void) const
 	return (this->array + this->size);
 }
 
+template <typename T>
+const T &Vector<T>::operator[](size_t index) const
+{
+    if (index >= size)
+        throw std::out_of_range("Index out of bounds");
+    return (array[index]);
+}
+
 #endif
