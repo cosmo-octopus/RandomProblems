@@ -347,6 +347,349 @@ typename FrankList<T>::reference	FrankList<T>::max()
 	return (atail->val);
 }
 
+/* operators */
+
+template <typename T>
+const FrankList<T>	&FrankList<T>::operator=(const FrankList<T> &rhv)
+{
+	if (this != &rhv)
+	{
+		clear();
+		for (auto it = rhv.cbegin(); it != rhv.cend(); ++it)
+			push_back(*it);
+	}
+	return (*this);
+}
+
+template <typename T>
+const FrankList<T>	&FrankList<T>::operator=(FrankList<T> &&rhv)
+{
+	clear();
+
+	head = rhv.head;
+	tail = rhv.tail;
+	ahead = rhv.ahead;
+	atail = rhv.atail;
+
+	rhv.head = nullptr;
+	rhv.tail = nullptr;
+	rhv.ahead = nullptr;
+	rhv.atail = nullptr;
+
+	return (*this);
+}
+
+template <typename T>
+const FrankList<T>	&FrankList<T>::operator=(std::initializer_list<T> init)
+{
+	clear();
+
+	for (auto i : init)
+	    push_back(i);
+    return (*this);
+}
+
+template <typename T>
+bool	FrankList<T>::operator==(const FrankList<T>	&rhv) const
+{
+	if (this->size() != rhv.size())
+		return (false);
+
+	Node	*it1 = this->ahead;
+	Node	*it2 = rhv.ahead;
+
+	while (it1)
+	{
+		if (it1->val != it2->val)
+			return (false);
+		it1 = it1->next;
+		it2 = it2->next;
+	}
+	return (true);
+}
+
+template <typename T>
+bool	FrankList<T>::operator!=(const FrankList<value_type>& rhv) const
+{
+	return !(*this == rhv);
+}
+
+template <typename T>
+bool	FrankList<T>::operator<(const FrankList &rhv) const
+{
+	size_type	size1 = this->size();
+	size_type	size2 = rhv.size();
+
+	if (size1 < size2)
+		return (true);
+	if (size1 == size2)
+	{
+		Node	*it1 = this->ahead;
+		Node	*it2 = rhv.ahead;
+
+		while (it1)
+		{
+			if (it1->val < it2->val)
+				return (true);
+			if (it1->val > it2->val)
+				return (false);
+			it1 = it1->next;
+			it2 = it2->next;
+		}
+	}
+	return (false);
+}
+
+template <typename T>
+bool	FrankList<T>::operator<=(const FrankList<T>& rhv) const
+{
+	return (*this < rhv || *this == rhv);
+}
+
+template <typename T>
+bool	FrankList<T>::operator>(const FrankList<T>& rhv) const
+{
+	return !(*this <= rhv);
+}
+
+template <typename T>
+bool	FrankList<T>::operator>=(const FrankList<T>& rhv) const
+{
+	return !(*this < rhv);
+}
+
+/* iterators */
+
+template <typename T>
+typename FrankList<T>::const_iterator	FrankList<T>::cbegin() const
+{
+	return (const_iterator(head));
+}
+
+template <typename T>
+typename FrankList<T>::const_iterator	FrankList<T>::cend() const
+{
+	return (const_iterator(tail->next));
+}
+
+template <typename T>
+typename FrankList<T>::const_reverse_iterator	FrankList<T>::crbegin() const
+{
+	return (const_reverse_iterator(tail));
+}
+
+template <typename T>
+typename FrankList<T>::const_reverse_iterator	FrankList<T>::crend() const
+{
+	return (const_reverse_iterator(head->prev));
+}
+
+template <typename T>
+typename FrankList<T>::const_asc_iterator	FrankList<T>::cabegin() const
+{
+	return (const_asc_iterator(ahead));
+}
+
+template <typename T>
+typename FrankList<T>::const_asc_iterator	FrankList<T>::caend() const
+{
+	return (const_asc_iterator(atail->asc));
+}
+
+template <typename T>
+typename FrankList<T>::const_desc_iterator	FrankList<T>::cdbegin() const
+{
+	return (const_desc_iterator(atail));
+}
+
+template <typename T>
+typename FrankList<T>::const_desc_iterator	FrankList<T>::cdend() const
+{
+	return (const_desc_iterator(ahead->desc));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_iterator	FrankList<T>::cmbegin() const
+{
+	return (const_multi_iterator(head));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_iterator	FrankList<T>::cmend() const
+{
+	return (const_iterator(tail->next));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_iterator	FrankList<T>::cmabegin() const
+{
+	return (const_multi_iterator(ahead));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_iterator	FrankList<T>::cmaend() const
+{
+	return (const_multi_iterator(atail->asc));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_reverse_iterator	FrankList<T>::cmrbegin() const
+{
+	return (const_multi_reverse_iterator(tail));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_reverse_iterator	FrankList<T>::cmrend() const
+{
+	return (const_iterator(head->prev));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_reverse_iterator	FrankList<T>::cmrdbegin() const
+{
+	return (const_multi_reverse_iterator(atail));
+}
+
+template <typename T>
+typename FrankList<T>::const_multi_reverse_iterator	FrankList<T>::cmrdend() const
+{
+	return (const_multi_reverse_iterator(ahead->desc));
+}
+
+template <typename T>
+typename FrankList<T>::iterator	FrankList<T>::begin() 
+{
+	return (iterator(head));
+}
+
+template <typename T>
+typename FrankList<T>::iterator	FrankList<T>::end() 
+{
+	return (iterator(tail->next));
+}
+
+template <typename T>
+typename FrankList<T>::reverse_iterator	FrankList<T>::rbegin() 
+{
+	return (reverse_iterator(tail));
+}
+
+template <typename T>
+typename FrankList<T>::reverse_iterator	FrankList<T>::rend() 
+{
+	return (reverse_iterator(head->prev));
+}
+
+template <typename T>
+typename FrankList<T>::asc_iterator	FrankList<T>::abegin() 
+{
+	return (asc_iterator(ahead));
+}
+
+template <typename T>
+typename FrankList<T>::asc_iterator	FrankList<T>::aend() 
+{
+	return (asc_iterator(atail->asc));
+}
+
+template <typename T>
+typename FrankList<T>::desc_iterator	FrankList<T>::dbegin() 
+{
+	return (desc_iterator(atail));
+}
+
+template <typename T>
+typename FrankList<T>::desc_iterator	FrankList<T>::dend() 
+{
+	return (desc_iterator(ahead->desc));
+}
+
+template <typename T>
+typename FrankList<T>::multi_iterator	FrankList<T>::mbegin() 
+{
+	return (multi_iterator(head));
+}
+
+template <typename T>
+typename FrankList<T>::multi_iterator	FrankList<T>::mend() 
+{
+	return (iterator(tail->next));
+}
+
+template <typename T>
+typename FrankList<T>::multi_iterator	FrankList<T>::mabegin() 
+{
+	return (multi_iterator(ahead));
+}
+
+template <typename T>
+typename FrankList<T>::multi_iterator	FrankList<T>::maend() 
+{
+	return (multi_iterator(atail->as));
+}
+
+template <typename T>
+typename FrankList<T>::multi_reverse_iterator	FrankList<T>::mrbegin() 
+{
+	return (multi_reverse_iterator(tail));
+}
+
+template <typename T>
+typename FrankList<T>::multi_reverse_iterator	FrankList<T>::mrend() 
+{
+	return (iterator(head->prev));
+}
+
+template <typename T>
+typename FrankList<T>::multi_reverse_iterator	FrankList<T>::mrdbegin() 
+{
+	return (multi_reverse_iterator(atail));
+}
+
+template <typename T>
+typename FrankList<T>::multi_reverse_iterator	FrankList<T>::mrdend() 
+{
+	return (multi_reverse_iterator(ahead->des));
+}
+
+/* * */
+
+/*  inserts a new element with value val
+before the element pointed to by pos */
+template <typename T>
+template <typename iter>
+iter	FrankList<T>::insert_def(iter pos, const_reference val)
+{
+	assert(pos.ptr != nullptr);
+
+	if (pos.ptr == head)
+		push_front(val);
+	else
+	{
+		Node	*node = new Node(val);
+
+		pos.ptr->prev->next = node;
+		node->prev = pos.ptr->prev;
+		pos.ptr->prev = node;
+		node->next = pos.ptr;
+
+		put_in_sorted_order(node);
+	}
+	return (pos);
+}
+
+template <typename T>
+template <typename iter>
+iter	FrankList<T>::insert(iter pos, size_type s, const_reference val)
+{
+	/* to perform compile-time assertions */
+	static_assert(std::is_base_of<base_iterator, iter>::value == true, "wrong iterator");
+
+	for (size_type i = 0; i < s; ++i)
+		pos = insert(pos, val);
+	return (pos);
+}
+
 }
 
 #endif

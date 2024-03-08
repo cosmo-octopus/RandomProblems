@@ -319,12 +319,7 @@ public:
     const FrankList<value_type>& operator=(std::initializer_list<value_type> init); //O(n)
 
     bool operator==(const FrankList<value_type>& rhv) const; //O(n)
-    bool operator!=(const FrankListtemplate <typename T>
-typename FrankList<T>::const_reference	FrankList<T>::back() const
-{
-	assert(head != nullptr);
-	return (tail->val);
-}<value_type>& rhv) const; //O(n)
+    bool operator!=(const FrankList<value_type>& rhv) const; //O(n)
     bool operator<(const FrankList<value_type>& rhv) const; //O(n)
     bool operator<=(const FrankList<value_type>& rhv) const; //O(n)
     bool operator>(const FrankList<value_type>& rhv) const; //O(n)
@@ -366,6 +361,10 @@ public:
     multi_reverse_iterator mrdend(); //O(1)
 
 public:
+    /* template metaprogramming construct that uses SFINAE
+    (Substitution Failure Is Not An Error) to conditionally
+    enable a template function based on the properties of
+    the template argument iter */
     template <typename iter>
     typename std::enable_if<std::is_base_of<const_iterator, iter>::value ||
                               std::is_base_of<const_asc_iterator, iter>::value ||
