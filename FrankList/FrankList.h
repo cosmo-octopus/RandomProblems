@@ -319,7 +319,12 @@ public:
     const FrankList<value_type>& operator=(std::initializer_list<value_type> init); //O(n)
 
     bool operator==(const FrankList<value_type>& rhv) const; //O(n)
-    bool operator!=(const FrankList<value_type>& rhv) const; //O(n)
+    bool operator!=(const FrankListtemplate <typename T>
+typename FrankList<T>::const_reference	FrankList<T>::back() const
+{
+	assert(head != nullptr);
+	return (tail->val);
+}<value_type>& rhv) const; //O(n)
     bool operator<(const FrankList<value_type>& rhv) const; //O(n)
     bool operator<=(const FrankList<value_type>& rhv) const; //O(n)
     bool operator>(const FrankList<value_type>& rhv) const; //O(n)

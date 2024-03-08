@@ -291,6 +291,61 @@ void	FrankList<T>::pop_back()
 	tail->next = nullptr;
 }
 
+template <typename T>
+typename FrankList<T>::const_reference	FrankList<T>::front() const
+{
+	assert(head != nullptr);
+	return (head->val);
+}
+
+template <typename T>
+typename FrankList<T>::reference	FrankList<T>::front()
+{
+	assert (head != nullptr);
+	return (head->val);
+}
+
+template <typename T>
+typename FrankList<T>::const_reference	FrankList<T>::back() const
+{
+	assert(head != nullptr);
+	return (tail->val);
+}
+
+template <typename T>
+typename FrankList<T>::reference	FrankList<T>::back()
+{
+	assert(head != nullptr);
+	return (tail->val);
+}
+
+template <typename T>
+typename FrankList<T>::const_reference	FrankList<T>::min() const
+{
+	assert (head != nullptr);
+	return (ahead->val);
+}
+
+template <typename T>
+typename FrankList<T>::reference	FrankList<T>::min()
+{
+	assert (head != nullptr);
+	return (ahead->val);
+}
+
+template <typename T>
+typename FrankList<T>::const_reference	FrankList<T>::max() const
+{
+	assert(head != nullptr);
+	return (atail->val);
+}
+
+template <typename T>
+typename FrankList<T>::reference	FrankList<T>::max()
+{
+	assert(head != nullptr);
+	return (atail->val);
+}
 
 }
 
