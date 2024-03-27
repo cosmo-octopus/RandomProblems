@@ -11,21 +11,26 @@
 class SpreadSheet {
 	private:
 		Cell**	mat;
-		size_t	row;
-		size_t	col;
+		int	row;
+		int	col;
 	public:
 		SpreadSheet() = delete;
 		SpreadSheet(int row, int col);
 		~SpreadSheet();
 
-		void	addRow(size_t row);
-		void	addCol(size_t col);
-		void	resizeRow(size_t size);
-		void	resizeCol(size_t size);
-		void	resize(size_t row, size_t col);
+		Cell&	operator()(int row, int col);
 
-		size_t	height();
-		size_t	width();
+		friend std::ostream& \
+		operator<<(std::ostream& os, const SpreadSheet& sp);
+
+		void	addRow(int row);
+		void	addCol(int col);
+		void	resizeRow(int size);
+		void	resizeCol(int size);
+		void	resize(int row, int col);
+
+		int	height();
+		int	width();
 };
 
 #endif

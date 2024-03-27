@@ -21,6 +21,9 @@ class Cell {
 		Cell&	operator=(int val);
 		Cell&	operator=(double val);
 
+		friend std::ostream& \
+		operator<<(std::ostream& os, const Cell& cell);
+
 		int			to_int();
 		double		to_double();
 		std::string	to_string();

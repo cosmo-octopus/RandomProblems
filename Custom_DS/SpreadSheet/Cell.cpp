@@ -67,3 +67,9 @@ std::string	Cell::to_string()
 {
 	return line;
 }
+
+std::ostream&	operator<<(std::ostream& os, const Cell& cell)
+{
+	std::cout << cell.line;
+	return os;
+}
