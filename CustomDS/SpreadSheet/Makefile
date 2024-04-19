@@ -1,6 +1,6 @@
 NAME		= spreadsheet
 
-SRC			= main.cpp Cell.cpp SpreadSheet.cpp
+SRC			= main.cpp Cell.cpp SpreadSheet.cpp Column.cpp
 OBJ			= $(SRC:.cpp=.o)
 CC			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g3
