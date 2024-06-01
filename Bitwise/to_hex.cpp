@@ -18,8 +18,10 @@ int	main()
 	int num;
 
 	std::cout << "Enter a number: ";
-	std::cin >> num;
-
-	std::cout << "My result: " << to_hex(num) << std::endl;
-	std::cout << "Automatic: " << std::hex << num << std::endl;
+	while (std::cin >> num)
+	{
+		std::cout << "My result: " << to_hex(num) << std::endl;
+		std::cout << "Automatic: " << std::hex << num << std::endl;
+		std::cout << "Enter a number: ";
+	}
 }

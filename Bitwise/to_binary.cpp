@@ -20,7 +20,11 @@ int	main()
 	int num;
 
 	std::cout << "Enter a number: ";
-	std::cin >> num;
 
-	std::cout << "Binary representation: " << to_binary(num) << std::endl;
+	while (std::cin >> num)
+	{
+		std::cout << "Binary representation: " << to_binary(num) << std::endl;
+		std::cout << "Enter a number: ";
+	}
+
 }
