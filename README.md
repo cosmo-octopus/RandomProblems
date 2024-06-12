@@ -1,38 +1,28 @@
-# Mastering-Coding-Patterns
+<div align="center">
+  <h1> Mastering Coding Patterns</h1>
+  <i>Coding patterns enhance our ability to map a new problem to an already known problem.<br><br></i>
+</div>
 
 ```
-Coding patterns enhance our “ability to map a new problem to an already known problem.”
-.     .       .  .   . .   .   . .    +  .
-  .     .  :     .    .. :. .___---------___.
-       .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
-    .  :       .  .  .:../:            . .^  :.:\.
-        .   . :: +. :.:/: .   .    .        . . .:\
- .  :    .     . _ :::/:               .  ^ .  . .:\
-  .. . .   . - : :.:./.                        .  .:\
-  .      .     . :..|:                    .  .  ^. .:|
-    .       . : : ..||        .                . . !:|
-  .     . . . ::. ::\(                           . :)/
- .   .     : . : .:.|. ######              .#######::|
-  :.. .  :-  : .:  ::|.#######           ..########:|
- .  .  .  ..  .  .. :\ ########          :######## :/
-  .        .+ :: : -.:\ ########       . ########.:/
-    .  .+   . . . . :.:\. #######       #######..:/
-      :: . . . . ::.:..:.\           .   .   ..:/
-   .   .   .  .. :  -::::.\.       | |     . .:/
-      .  :  .  .  .-:.":.::.\             ..:/
- .      -.   . . . .: .:::.:.\.           .:/
-.   .   .  :      : ....::_:..:\   ___.  :/
-   .   .  .   .:. .. .  .: :.:.:\       :/
-     +   .   .   : . ::. :.:. .:.|\  .:/|
-     .         +   .  .  ...:: ..|  --.:|
-.      . . .   .  .  . ... :..:.."(  ..)"
- .   .       .      :  .   .: ::/  .  .::\
+		⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠐⠉⠁⠀⠉⠉⢻⣶⣤⡀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⢸⣿⡇⠀⣿⣿⡇⣿⣿⡇⣼⣿⣿⣿⣿⣿      
+		⠀⠀⠀⠀⠀⠀⢀⢀⠎⠀⠀⢀⣀⣤⣤⣀⣘⣿⣿⣿⣆⠀⠀⠀⠀⠀⠉⠉⣿⣿⠉⠉⢸⣿⡇⠀⣿⣿⡃⣿⣿⡇⣿⣿⡇⠀⣿⣿    ⣿⡇⢴⣿⣿⣿⡆⠀⢸⣿⣿⣿⣿⣿⣿⠀⣿⡇⢸⣿⣿⣿⡇
+		⠀⠀⠀⠀⠀⠀⢠⣏⡀⠀⠀⠈⣉⣻⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⢸⣿⣧⣤⣿⣿⡇⣿⣿⡇⠻⣿⣷⣦⡀⠀    ⣿⡇⢸⣿⡀⠛⠃⠀⠀⠀⣿⡇⠀⣿⣿⠀⣿⡇⢸⣿⠀⠀
+		⠀⠀⠀⠀⡠⠂⠀⠏⣀⡀⠀⠀⠀⠉⠛⠿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⢸⣿⡟⠛⣿⣿⡇⣿⣿⡇⠀⠈⠻⢿⣿⣦    ⣿⡇⠈⠻⢿⣶⡄⠀⠀⠀⣿⡇⠀⣿⣿⠿⣿⡇⢸⣿⠿⠿⠇
+		⠀⠀⠀⣴⣤⣴⠞⢻⣿⠛⢿⣆⠀⠀⣿⣠⣿⣿⣿⣿⣿⠀⠀      ⣿⣿⠀⠀⢸⣿⡇⠀⣿⣿⡇⣿⣿⡇⣿⣿⡇⠀⣿⣿⠀   ⣿⡇⢰⣶⡀⣿⡇⠀⠀⠀⣿⡇⠀⣿⣿⠀⣿⡇⢸⣿⣀⣀⡀
+		⠀⠀⠀⣿⣿⠟⠀⡘⠋⠉⣙⣻⣇⠀⢹⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠛⠛⠀⠀⠘⠛⠃⠀⠛⠛⠃⠛⠛⠃⠈⠛⠛⠛⠛⠋⠀   ⠿⠇⠸⠿⠿⠿⠇⠀⠀⠀⠿⠇⠀⠿⠿⠀⠿⠇⠸⠿⠿⠿⠇
+		⠀⠀⠀⣿⣡⡄⠚⠻⢿⣿⣿⠿⣿⡆⢻⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀
+		⠀⠀⠀⣿⡿⢿⢆⠀⠀⠥⣖⣿⣿⣿⡈⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀               ⣶⣶⡆⠀⣶⣶⠀⢰⣶⣶⠀⢰⣶⣶⡀⢲⣶⣦⠀⢰⣶⣶
+		⠀⠀⠤⠁⠤⢤⣦⣶⣿⣿⣿⣿⣿⣿⣷⣬⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀               ⢸⣿⣧⠀⣿⣿⡇⢸⣿⣿⠀⣿⣿⣿⡇⠈⣿⣿⡀⣼⣿⡏
+		⠀⠀⠀⠀⠀⠀⠈⠙⠻⡿⢿⣿⠿⠛⢻⠛⢿⣿⣿⣿⣿⣿⡿⠿⠛⠀               ⢸⣿⣿⢸⣿⣿⡇⣼⣿⡇⢸⣿⡿⣿⣧⠀⢻⣿⣇⣿⣿⠁
+		⠀⠀⠀⠀⠀⣀⡀⢀⣪⣀⣀⠀⣀⣠⣤⣷⣾⣿⣿⣿⣿⣿⣿⣷⣄⠀               ⠀⣿⣿⢸⣿⣿⣇⣿⣿⠇⢸⣿⡇⣿⣿⡀⠘⣿⣿⣿⡏
+		⠀⠀⣐⣋⣿⣿⣿⠿⡿⠁⢠⣾⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷               ⠀⣿⣿⣿⣿⢿⣿⣿⣿⠀⣾⣿⠷⢿⣿⡇⠀⢻⣿⣿⠀⠀
+		⣠⣾⣿⣿⣿⠁⠀⢠⠁⢠⠏⣿⡿⠁⣸⡝⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿               ⠀⢸⣿⣿⡏⢸⣿⣿⡿⢰⣿⣿⠀⢸⣿⣷⠀⢸⣿⣿⠀
+		                                               ⠀⢸⣿⣿⡇⢸⣿⣿⡇⢸⣿⡇⠀⠀⣿⣿⠀⢸⣿⣿     
 ```
+# Data Structures and Algorithms</h1>
 
-# Data Structures and Algorithms
-
--   http://www.ideserve.co.in/
--   https://medium.freecodecamp.org/i-built-an-app-that-makes-learning-algorithms-and-data-structures-way-more-fun-46fbb8afacaf
+  -   http://www.ideserve.co.in/
+  -   https://medium.freecodecamp.org/i-built-an-app-that-makes-learning-algorithms-and-data-structures-way-more-fun-46fbb8afacaf
 
 # Skill Practice
 
@@ -51,4 +41,3 @@ Coding patterns enhance our “ability to map a new problem to an already known 
 
 -   http://web.stanford.edu/class/archive/cs/cs161/cs161.1168/
 -   http://online.stanford.edu/courses
-
