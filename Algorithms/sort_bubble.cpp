@@ -1,8 +1,8 @@
-/**************************
-	Best Case: O(n)
-	Average Case: O(n^2)
-	Worst Case: O(n^2)
-**************************/
+/****************************/
+/*	Best Case: O(n)			*/
+/*	Average Case: O(n^2)	*/
+/*	Worst Case: O(n^2)		*/
+/****************************/
 
 #include <iostream>
 #include <vector>
@@ -14,18 +14,6 @@ void	sort_bubble(std::vector<int>& vec)
 	for (auto it1 = vec.begin(); it1 != vec.end(); ++it1)
 	{
 		for (auto it2 = vec.begin(); it2 != vec.end(); ++it2)
-			if (*it1 < *it2)
-				std::swap(*it1, *it2);
-	}
-}
-*/
-
-/*
-void	sort_bubble(std::vector<int>& vec)
-{
-	for (auto it1 = --vec.end(); it1 != vec.begin() - 1; --it1)
-	{
-		for (auto it2 = vec.begin(); it2 != it1; ++it2)
 			if (*it1 < *it2)
 				std::swap(*it1, *it2);
 	}
@@ -48,6 +36,9 @@ void	sort_bubble(std::vector<int>& vec)
 				swap = true;
 			}
 		}
+
+		if (!swap)
+			break ;
 	}
 }
 

@@ -1,20 +1,26 @@
-/*
-	Best Case: O(n)
-	Average Case: O(n^2)
-	Worst Case: O(n^2)
-*/
+/****************************/
+/*	Best Case: O(n)			*/
+/*	Average Case: O(n^2)	*/
+/*	Worst Case: O(n^2)		*/
+/****************************/
 
 #include <iostream>
 #include <vector>
 
 void	sort_insertion(std::vector<int>& vec)
 {
-	for(auto it = vec.begin(); it != vec.end() - 1; ++it)
+	for (size_t i = 0; i < vec.size(); ++i)
 	{
-		auto it1 = it;
-		auto it2 = it1 + 1;
-		while (*it2 < *it1)
-			std::swap(*(it1--), *(it2--));
+		int key = vec[i];
+		size_t j = i - 1;
+
+		while (j >= 0 && vec[j] > key)
+		{
+			vec[j + 1] = vec[j];
+			j --;
+		}
+
+		vec[j + 1] = key;
 	}
 }
 
