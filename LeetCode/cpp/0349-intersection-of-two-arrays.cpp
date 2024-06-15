@@ -2,6 +2,8 @@
 #include <vector>
 #include <unordered_map>
 
+// time complexity: O(n+k) | space complexity: O(n)
+
 std::vector<int> intersection(std::vector<int>& nums1, std::vector<int>& nums2) {
     std::vector<int> res;
     std::unordered_map<int, bool> map;
