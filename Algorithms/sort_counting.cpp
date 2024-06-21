@@ -2,12 +2,12 @@
 #include <vector>
 
 /**
- * Time Complexity: best/average/worst O( n + k )
+ * Time Complexity: best/average/worst O ( n + k )
  * Space Complexity: O ( n + k )
  * 
  * ADVANTAGES:
  * 	1. faster than all comparison-based sorting algorithms
- * 	2. algorithm
+ * 	2. stable algorithm
  * DISATVANTAGES:
  * 	1. inefficient if the range of values to be sorted is very large
  * 	2. doesn’t work on decimal values
@@ -35,7 +35,6 @@ std::vector<int> sort_counting(const std::vector<int>& vec)
 	for (int i = 0; i < size; ++i)
 	{
 		ans[count[vec[i]] - 1] = vec[i];
-
 		count[vec[i]] --;
 	}
 
