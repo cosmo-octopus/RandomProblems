@@ -18,7 +18,8 @@ public:
             minRight[i] = std::min(minRight[i + 1], nums[i]);
 
         int beauty = 0;
-        for (int i = 1; i < n-1; ++i) {
+        for (int i = 1; i < n-1; ++i)
+		{
             if (maxLeft[i - 1] < nums[i] && nums[i] < minRight[i + 1])
                 beauty += 2;
             else if (nums[i - 1] < nums[i] && nums[i] < nums[i + 1])
